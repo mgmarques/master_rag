@@ -2,7 +2,9 @@
 
 
 1. Setup and Python installation 
-2. Create API keys & set the environment variables 
+2. Create and Activate a Virtual Environment
+3. Create API keys & set the environment variables 
+4. Start uvicorn server
 
 ### [1]-Setup and Python installation
 
@@ -39,29 +41,98 @@
    ```
 ---
 
+## [2]-Create and Activate a Virtual Environment
 
-### [2]-Create API keys & set the environment variables 
+#### macOS
+1. **Navigate to your project directory**
+   ```sh
+   cd /path/to/your/project
+   ```
+
+2. **Create a virtual environment**
+   ```sh
+   python3 -m venv .venv
+   ```
+
+3. **Activate the virtual environment**
+   ```sh
+   source .venv/bin/activate
+   ```
+
+4. **Verify that the virtual environment is active** (you should see `(venv)` in the terminal prompt).
+
+#### Windows
+1. **Navigate to your project directory**
+   ```sh
+   cd C:\path\to\your\project
+   ```
+
+2. **Create a virtual environment**
+   ```sh
+   python -m venv .venv
+   ```
+
+3. **Activate the virtual environment**
+   ```sh
+   .venv\Scripts\activate
+   ```
+
+4. **Verify that the virtual environment is active** (Command Prompt should show `(venv)` before the directory path).
+
+---
+
+## Deactivating the Virtual Environment
+For both macOS and Windows, deactivate the virtual environment by running:
+```sh
+ deactivate
+```
+
+---
+
+### [3]-Package Installation
+(Mac)
+```sh
+pip3 install -r requirements.txt
+
+export PYTHONPATH=$PYTHONPATH:/path/to/autogen_agentchat
+```
+
+(Windows)
+```sh
+pip install -r requirements.txt
+```
+
+---
+
+## Exiting the Virtual Environment
+Simply run:
+```sh
+deactivate
+```
 
 
-#### 2.1 Setting Up OpenAI Secret Key  
+### [3]-Create API keys & set the environment variables 
+
+
+#### 3.1 Setting Up OpenAI Secret Key  
 1. Create an OpenAI Account[OpenAI's API Keys page](https://platform.openai.com/signup/),
 2. Go to [OpenAI's API Keys page](https://platform.openai.com/settings/organization/api-keys),
 3. Click **Create new secret key** and copy it, 
 4. You will need to add your billing information (MANAGE > Settings > Billing).  
 
 
-#### 2.2 LangSmith
+#### 3.2 LangSmith
 1. Create a [LangSmith Account](https://smith.langchain.com/),
+2. Select **Tracing** from the sidebar menu and **Create a new project**
 
-**2.1 Create a project**
+**3.2.1 Create a project**
 ![Create a project](images/1.png)
 
-**2.2 Provide a name**
+**3.2.2 Provide a name**
 ![Provide a name](images/2.png)
 
-**2.3 Configure Project**
+**3.2.3 Configure Project**
 ![Configure Project](images/3.png)
-
 
 #### Set environment variables 
 
@@ -85,4 +156,6 @@ LANGSMITH_PROJECT="PROJECT_NAME"
 ```
 
 
+### [4]-Start uvicorn server
 
+`uvicorn server:app --reload --port 8000`

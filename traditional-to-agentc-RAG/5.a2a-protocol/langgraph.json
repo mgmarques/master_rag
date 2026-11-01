@@ -1,0 +1,9 @@
+{
+  "dependencies": [
+    "."
+  ],
+  "graphs": {
+    "technical_support_agent": "./agents_stream/technical_support_agent.py:graph",
+    "warranty_specialist_agent": "./agents_stream/warranty_specialist_agent.py:graph"
+  }
+}
