@@ -24,7 +24,7 @@ llm = ChatOpenAI(
     temperature=0)
 
 # Load technical support guidance from an external text file
-GUIDANCE_FILE = Path("support_guidance.txt")
+GUIDANCE_FILE = Path("../../traditional-to-agentc-RAG/support_guidance.txt")
 
 SUPPORT_GUIDANCE = GUIDANCE_FILE.read_text(encoding="utf-8")
 
