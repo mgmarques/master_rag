@@ -1,5 +1,7 @@
+# Decomposition-query RAG
 import os
-os.environ["USER_AGENT"] = "master-rag-app"
+USER_AGENT = "master-rag-app"
+os.environ["USER_AGENT"] = USER_AGENT
 
 import bs4
 from dotenv import load_dotenv
@@ -22,9 +24,11 @@ load_dotenv()
 
 LANGUAGE_MODEL = "gemma4:31b-cloud"
 
-# LLM and Embedding Models
+# -------------------------- LLM and Embedding Models --------------------------
 llm = ChatOpenAI(model=LANGUAGE_MODEL, base_url="http://localhost:11434/v1", temperature=0)
 embeddings = OllamaEmbeddings(model="mxbai-embed-large:latest", base_url="http://localhost:11434")
+
+# --------------------------- Pre-Process: INDEXING ---------------------------
 
 # load documents (data source: https://blog.langchain.dev/)
 loader = WebBaseLoader("https://blog.langchain.dev/deconstructing-rag/")
@@ -39,23 +43,27 @@ text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
     chunk_overlap=50)
 splits = text_splitter.split_documents(docs)
 
-# Index and load embeddings
+# Create the vector store: Index and load embeddings
 vectorstore = Chroma.from_documents(documents=splits, embedding=embeddings)
 
-# Create the vector store
-retriever = vectorstore.as_retriever()
+# Wraps around a VectorStore to search and fetch relevant document chunks based on semantic similarity.
+# It automatically passes the query to an embedding model
+retriever = vectorstore.as_retriever(
+    search_type="similarity", 
+    search_kwargs={"k": 3}  # Restricts output to the top 3 most relevant chunks
+)
 
-# 1. DECOMPOSITION
-template = """You are a helpful assistant trained to generates multiple sub-questions related to an input question. \n
-The goal is to break down the input into a set of sub-problems / sub-questions that can be answered in isolation. \n
+# ----------------- Query Decompositon: Many Simple Sub-Queries ---------------------
+template = """You are a helpful assistant trained to generates multiple sub-questions 
+related to an input question. \n
+The goal is to break down the input into a set of sub-problems / sub-questions that 
+can be answered in isolation. \n
 Generate multiple search queries related to: {question} \n
 Output (3 queries):"""
 prompt_decomposition = ChatPromptTemplate.from_template(template)
 
-
 def generate_sub_questions(query):
     """ generate sub questions based on user query"""
-    pass 
     # Chain
     generate_queries_decomposition = (
         prompt_decomposition 
@@ -71,7 +79,8 @@ def generate_sub_questions(query):
     print(Fore.WHITE + questions_str + Fore.RESET + "\n")
     return sub_questions 
 
-# 2. ANSWER SUBQUESTIONS RECURSIVELY 
+# --------------------------- RETGERIEVAL and GENERATION -------------------------- 
+# ------------------------ ANSWER SUBQUESTIONS RECURSIVELY ------------------------ 
 template = """Here is the question you need to answer:
 \n --- \n {sub_question} \n --- \n
 
@@ -107,11 +116,10 @@ def generate_qa_pairs(sub_questions):
         q_a_pairs = q_a_pairs + "\n --- \n" + q_a_pair 
     
 
-# 3. ANSWER INDIVIDUALLY
+# ---------------------------- ANSWER INDIVIDUALLY ------------------------------
 # RAG prompt = https://smith.langchain.com/hub/rlm/rag-prompt
 # prompt_rag = hub.pull("rlm/rag-prompt") Depricated or use it from from langchain_classic import hub
-# Instead of: client = Client() -> prompt = client.pull_prompt(...)
-# Use this:
+# Instead use this:
 template_rag = """You are an assistant for question-answering tasks. 
 Use the following pieces of retrieved context to answer the question. 
 If you don't know the answer, just say that you don't know. 
@@ -143,7 +151,7 @@ def retrieve_and_rag(prompt_rag, sub_questions):
     
 # SUMMARIZE AND ANSWER 
 
-# Prompt
+# --------------------------- RAG FINAL ANSWER PROMPT ---------------------------
 template = """Here is a set of Q+A pairs:
 
 {context}
@@ -153,20 +161,24 @@ to use these to synthesize an answer to the question: {question}
 
 prompt = ChatPromptTemplate.from_template(template)
 
-
-# Query
+# -------------------------------- RAG Pipeline ---------------------------------
 def query(query):
-    """ generate optimized answer for a given query using the improved subqueries """
-    queries = [
+    """ 
+    Generate optimized answer for a given query using the improved subqueries.
+    Suggested Question: 
+        queries = [
         "How is context improving AI systems",
         "What are the two main components involved in Basic Reflection",
         "Explain the steps involved in the Reflexion loop"
-    ]
+        ]
+    """
+    # Retrieval Chain
     sub_questions = generate_sub_questions(query)
     generate_qa_pairs(sub_questions)
     answers, questions = retrieve_and_rag(prompt_rag, sub_questions)
     context = format_qa_pairs(questions, answers)
 
+    # Final RAG Generation Chain (reuses the already retrieved docs as context)    
     final_rag_chain = (
         prompt
         | llm

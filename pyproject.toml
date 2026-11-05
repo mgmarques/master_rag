@@ -33,6 +33,8 @@ dependencies = [
     "requests>=2.34.2",
     "tdqm>=0.0.1",
     "tiktoken>=0.14.0",
+    "torch>=2.15.0",
+    "transformers>=5.22.1",
     "uvicorn>=0.54.0",
 ]
 

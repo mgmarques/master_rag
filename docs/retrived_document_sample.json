@@ -1,0 +1,14 @@
+{"lc": 1, 
+"type": "constructor", 
+"id": ["langchain", "schema", "document", "Document"], 
+"kwargs": {
+    "metadata": {
+        "description": "Explore advanced RAG techniques for LLM applications: query transformations, routing, indexing, and post-processing to improve retrieval.", 
+        "language": "en", 
+        "source": "https://blog.langchain.dev/deconstructing-rag/", 
+        "title": "Deconstructing RAG"
+    }, 
+    "page_content": "RAG strategies, we highlight the notable boost in performance that they saw simply from experimenting with the chunk size during document embedding. This makes sense, because chunk size controls how much information we load into the context window (or \"RAM\" in our LLM OS analogy). Since this is a central step in index building, we have an open source Streamlit app where you can test various chunk sizes to gain some intuition; in particular, it's worth examining where the document is split using various split sizes or strategies and whether semantically related content is unnaturally split.Document embedding strategyOne of the simplest and most useful ideas in index design is to decouple what you embed (for retrieval) from what you pass to the LLM (for answer synthesis). For example, consider a large passage of text with lots of redundant detail. We can embed a few different representations of this to improve retrieval, such as a summary or small chunks to narrow the scope of information that is embedded. In either case, we can then retrieve the full text to pass to the LLM. These can be implemented using multi-vector and parent-document retriever, respectively. The multi-vector retriever also works well for semi-structured documents that contain a mix of text and tables (see our cookbook and template). In these cases, it's possible to extract each table, produce a summary of the table that is well suited for retrieval, but return the raw table to the LLM for answer", 
+    "type": "Document"
+    }
+}
