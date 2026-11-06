@@ -19,10 +19,10 @@ This is a generic utility class found in orchestration frameworks like LangChain
 > Use InMemoryVectorStore if you are writing a quick test file,trying out an API, or doing a 10-line tutorial. 
 
 ## Main Libraries:
-- **OpenAI**: [OpenAI](https://python.langchain.com/docs/integrations/platforms/openai) - is a Python library that provides a simple interface to the OpenAI API. It also provides a command-line interface (CLI) for interacting with the API.
-- **python-dotenv**: [python-dotenv](https://pypi.org/project/python-dotenv/) - is a Python library that loads environment variables from a .env file. It is used to load the OpenAI API key from the .env file.
-- **colorama**: [python-dotenv](https://pypi.org/project/colorama/) - is a Python library to produce colored terminal text and outputs
-- **InMemoryVectorStore**: [LangChain: InMemoryVectorStore](https://reference.langchain.com/python/langchain-core/vectorstores/in_memory/InMemoryVectorStore) - In-memory vector store implementation, that uses a dictionary, and computes cosine similarity for search using numpy.
+- **[OpenAI](https://python.langchain.com/docs/integrations/platforms/openai)**: is a Python library that provides a simple interface to the OpenAI API. It also provides a command-line interface (CLI) for interacting with the API.
+- **[python-dotenv](https://pypi.org/project/python-dotenv/)**: is a Python library that loads environment variables from a .env file. It is used to load the OpenAI API key from the .env file.
+- **[colorama](https://pypi.org/project/colorama/)**: is a Python library to produce colored terminal text and outputs
+- **[LangChain: InMemoryVectorStore](https://reference.langchain.com/python/langchain-core/vectorstores/in_memory/InMemoryVectorStore)**: In-memory vector store implementation, that uses a dictionary, and computes cosine similarity for search using numpy.
 
 ## References
 - [LangChain: Vector Store Integrations](https://docs.langchain.com/oss/python/integrations/vectorstores) - A vector stores embedded data and performs similarity search.

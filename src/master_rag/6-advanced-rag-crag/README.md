@@ -8,8 +8,8 @@ In standard RAG, the system assumes that whatever the retriever finds is useful.
 CRAG introduces a **self-correction loop** that evaluates the quality of retrieved documents before they ever reach the final generation stage.
 
 ## Main Libraries:
-- **ChromaDB** : [chromaDB](https://python.langchain.com/v0.2/docs/integrations/vectorstores/chroma/) : Chroma is a AI-native open-source vector database focused on developer productivity
-- **[Tavily Search API](https://app.tavily.com/documentation/apis)** : Tavily's Search API is a search engine built specifically for AI agents (LLMs), delivering real-time, accurate, and factual results at speed.
+- **[chromaDB](https://python.langchain.com/v0.2/docs/integrations/vectorstores/chroma/)**: Chroma is a AI-native open-source vector database focused on developer productivity
+- **[Tavily Search API](https://app.tavily.com/documentation/apis)**: Tavily's Search API is a search engine built specifically for AI agents (LLMs), delivering real-time, accurate, and factual results at speed.
 
 ### The CRAG Workflow
 CRAG transforms the linear RAG pipeline into a decision-making graph.

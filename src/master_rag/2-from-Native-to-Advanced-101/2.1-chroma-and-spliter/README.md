@@ -23,10 +23,10 @@ Chroma is a full-featured vector database designed specifically as a developer-c
 > Use Chroma / ChromaDB if you are building an actual desktop app, a local assistant, or a RAG prototype where you need your documents saved across app restarts and want to filter by metadata. 
 
 ## Main Libraries:
-- **OpenAI**: [OpenAI](https://python.langchain.com/docs/integrations/platforms/openai) - is a Python library that provides a simple interface to the OpenAI API. It also provides a command-line interface (CLI) for interacting with the API.
-- **python-dotenv**: [python-dotenv](https://pypi.org/project/python-dotenv/) - is a Python library that loads environment variables from a .env file. It is used to load the OpenAI API key from the .env file.
-- **colorama**: [python-dotenv](https://pypi.org/project/colorama/) - is a Python library to produce colored terminal text and outputs
-- **ChromaDB** : [chromaDB](https://python.langchain.com/v0.2/docs/integrations/vectorstores/chroma/) : Chroma is a AI-native open-source vector database focused on developer productivity
+- **[OpenAI](https://python.langchain.com/docs/integrations/platforms/openai)**: is a Python library that provides a simple interface to the OpenAI API. It also provides a command-line interface (CLI) for interacting with the API.
+- **[python-dotenv](https://pypi.org/project/python-dotenv/)**: is a Python library that loads environment variables from a .env file. It is used to load the OpenAI API key from the .env file.
+- **[colorama](https://pypi.org/project/colorama/)**: is a Python library to produce colored terminal text and outputs
+- **[chromaDB](https://python.langchain.com/v0.2/docs/integrations/vectorstores/chroma/)**: Chroma is a AI-native open-source vector database focused on developer productivity
 
 ## References
 - [Chroma integration with LangChais](https://docs.langchain.com/oss/python/integrations/vectorstores/chroma)
