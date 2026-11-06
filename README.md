@@ -20,15 +20,21 @@ The quality of your RAG is capped by the quality of your data. "Garbage in, garb
 
 ## Phase 3: Advanced Retrieval & Query Optimization
 This is where you solve the "poorly phrased query" and "irrelevant result" problems.
-*   **Pre-Retrieval Optimization:**
-    *   **Query Transformation:** Rewriting user queries for better vector matching.
-    *   **Query Decomposition:** Breaking a complex question ("Compare product A and B") into two separate searches ("What is product A?" and "What is product B?").
-    *   **RAG-Fusion:** Generating multiple query variations to increase recall.
-*   **Retrieval Optimization:** Implementing **Hybrid Search** (combining Vector search for semantics and BM25 for keyword precision).
+*   **Pre-Retrieval Optimization by Query Transformation:** Rewriting user queries for better vector matching. 
+    *   **Step-back prompting:** Involves creating a more generic, high-level version of the query to retrieve broader context.
+    *   **Query Decomposition:** Using the power of LLMs by rewriting and rephrasing the user input to improve the retrieval process by breaking down a question into well-written sub-questions.
+    *   **Multi-Query Retrieval/(Query Expansion)**: Generating multiple query variations to increase recall.
+    *   **Hypothetical Document Embeddings:** HyDE flips the retrieval process on its head. Instead of searching for a question, it searches for an answer.
+*   **Retrieval Optimization:** 
+    * **Hybrid Search:** Combining Vector search for semantics and BM25 for keyword precision.
+    * **Fine Tuning Embedding Model:** Fine-tuning a pre-trained model helps the model to understand the nuances of a specific domain or dataset, and as a consequence, you can significantly improve the relevance and accuracy of retrieved documents.
 *   **Post-Retrieval Optimization:**
-    *   **RRF (Reciprocal Rank Fusion):** Merging multiple result lists.
+    *   **RAG-Fusion:** Builds on the multi-query approach by re-ranking the returned documents from each sub-question for better RAG accuracy and relevance.
+    *   **RRF (Reciprocal Rank Fusion):** Merges the rankings that your multiple queries already produced, by an optional parameter k.
     *   **Re-Ranking:** Using Cross-Encoders (like Cohere) to precisely score the top 5 documents.
     *   **Context Compression:** Stripping noise from chunks to save LLM tokens.
+    *   **Corrective RAG**: CRAG is an enhancement to standard RAG that evaluates the quality of retrieved documents and triggers external knowledge searches to correct or supplement irrelevant or insufficient information.
+    *   **Response Summarization**: Summarize using an LLM or a pre-trained BART model. This step may be necessary if you stored large chunks of text vectors in a database during the indexing process. 
 
 ## Phase 4: Enhanced Quality & Multimodal RAG
 Real-world data is not just clean text; it is trapped in PDFs, tables, and images.

@@ -1,11 +1,11 @@
 # Project : Advanced RAG - Corrective RAG (CRAG)
 **Corrective RAG (CRAG)** is a sophisticated RAG architecture designed to solve the "hallucination" problem caused by **irrelevant retrieval**.
 
-CRAG enhances the traditional RAG pipeline by introducing a retrieval evaluator to assess the relationship between the retrieved documents and the query. 
-
 In standard RAG, the system assumes that whatever the retriever finds is useful. If the retriever returns "noise" (documents that look similar mathematically but are factually irrelevant), the LLM will often try to force an answer using that bad information, leading to a hallucination.
 
-CRAG introduces a **self-correction loop** that evaluates the quality of retrieved documents before they ever reach the final generation stage.
+CRAG introduces a **self-correction cycle** that assesses the quality of retrieved documents; if they are of low quality, they are discarded, and the system triggers external knowledge searches to correct or supplement irrelevant or insufficient information.
+
+An LLM can be used as an evaluator.
 
 ## Main Libraries:
 - **[chromaDB](https://python.langchain.com/v0.2/docs/integrations/vectorstores/chroma/)**: Chroma is a AI-native open-source vector database focused on developer productivity
@@ -45,7 +45,7 @@ CRAG is typically implemented using **LangGraph** because it requires a loop/con
 ```python
 # High-level logic for a CRAG node
 def grade_documents(query, docs):
-    # LLM Prompt: "Is this document relevant to the query? Answer YES, NO, or PARTIAL"
+    # LLM Prompt: "Is this document relevant to the query? Answer YES or NO"
     grades = llm_grader.invoke(query, docs) 
     return grades
 
@@ -53,7 +53,7 @@ def rag_correction_loop(query):
     docs = retriever.invoke(query)
     grades = grade_documents(query, docs)
     
-    filtered_docs = [doc for doc, grade in zip(docs, grades) if grade == "Correct"]
+    filtered_docs = [doc for doc, grade in zip(docs, grades) if grade == "YES"]
     
     if len(filtered_docs) == len(docs):
         return generate_answer(query, filtered_docs) # Path A

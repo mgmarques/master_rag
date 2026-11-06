@@ -152,7 +152,7 @@ web_search_tool = TavilySearchResults(k=3)
 
 def search_web(query):
     docs = web_search_tool.invoke({"query": query})
-    web_results = "\n".join([d["content"] for d in docs])
+    web_results = "\n".join([doc["content"] for doc in docs])
     return Document(page_content=web_results)
 
 # --------------------------- RAG FINAL ANSWER PROMPT ---------------------------
@@ -180,13 +180,14 @@ def query(query):
      * Irrelevant: What is the temperature in grous celcios now at Porto Alegre?
 
     """
-
-    # query and evaluate
-    binary_score, docs = assess_retrieve_docs(query)
-    print("binary score:", binary_score)
+    # Rewrite the query
+    print(f"{Fore.YELLOW}Rewriting and optmize the query...{Fore.RESET}")  
+    optimized_query = rewrite_query(query)
+    # Evaluate
+    binary_score, docs = assess_retrieve_docs(optimized_query)
+    print("Relevance Score:", binary_score)
+    #  if they are of low quality triggers external knowledge searches to correct or supplement irrelevant or insufficient information.
     if binary_score == "no":
         print(f"{Fore.MAGENTA}Retrieval is not relevant. Searching the web...{Fore.RESET}")
-        docs = search_web(query) 
-    print(f"{Fore.YELLOW}Retrieval, rewriting and optmize the query...{Fore.RESET}")  
-    optimized_query = rewrite_query(query)
+        docs = search_web(optimized_query) 
     return generate_answer(docs, optimized_query)

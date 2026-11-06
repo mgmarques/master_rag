@@ -3,10 +3,10 @@
 
 In standard RAG, if a user asks a question in a way that doesn't perfectly align with the vector embeddings of your documents, the retriever will miss the most relevant information. RAG-Fusion fixes this by generating multiple versions of the user's query and fusing the results together.
 
-### The RAG-Fusion Workflow
+## The RAG-Fusion Workflow
 RAG-Fusion follows a four-step process:
 
-#### 1. Query Generation (Expansion)
+### 1. Query Generation (Expansion)
 Instead of using the user's raw query, you send it to an LLM and ask it to generate **3 to 5 variations** of the question from different perspectives.
 *   **User Query:** "How do I improve my LLM's accuracy?"
 *   **Generated Variants:**
@@ -15,10 +15,10 @@ Instead of using the user's raw query, you send it to an LLM and ask it to gener
     3. "Strategies for improving retrieval quality in RAG pipelines?"
     4. "How to fine-tune an LLM for better accuracy?"
 
-#### 2. Multi-Query Retrieval
+### 2. Multi-Query Retrieval
 The system runs a vector search for **every single one** of these queries. This gives you multiple lists of documents. Because the queries are phrased differently, they will likely "hit" different parts of the vector space, capturing documents that the original query would have missed.
 
-#### 3. Reciprocal Rank Fusion (RRF)
+### 3. Reciprocal Rank Fusion (RRF)
 Now you have 4 or 5 different lists of documents. Some documents will appear in all lists; some only in one. RRF is the mathematical algorithm used to re-rank these documents to find the most "consistently" relevant ones.
 
 **The RRF Formula:**
@@ -28,10 +28,10 @@ $$\text{Score}(d) = \sum_{q \in \text{queries}} \frac{1}{k + \text{rank}(q, d)}$
 
 **Example:** If a document is ranked #1 in one list and #2 in another, its score is $\frac{1}{60+1} + \frac{1}{60+2}$. A document that is #10 in all lists might actually end up ranking higher than a document that was #1 in only one list but didn't appear in others.
 
-#### 4. Final Generation
+### 4. Final Generation
 The top-N documents from the fused list are passed to the LLM as context to generate the final answer.
 
-### Conceptual Implementation (Python/LangChain)
+## Conceptual Implementation (Python/LangChain)
 Here is how you would structure a RAG-Fusion pipeline:
 
 ```python
@@ -80,7 +80,7 @@ def rag_fusion(user_query, answers=5):
 final_context = rag_fusion("How to improve LLM accuracy?")
 ```
 
-### Why use RAG-Fusion instead of standard RAG?
+## Why use RAG-Fusion instead of standard RAG?
 | Feature | Standard RAG | RAG-Fusion |
 | :--- | :--- | :--- |
 | **Query Sensitivity** | High (Small change in wording $\to$ different results) | Low (Robust to phrasing) |
