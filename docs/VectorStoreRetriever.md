@@ -32,11 +32,10 @@ While highly popular within the Python and JavaScript LangChain Ecosystem, the e
 Would you like to see how to configure advanced search parameters like Maximum Marginal Relevance (MMR), or do you need help chaining this retriever to an LLM for a full RAG pipeline?
 
 ## References
-[1] (https://lagnchain.readthedocs.io/en/stable/modules/indexes/retrievers/examples/vectorstore-retriever.html),
-[2] (https://www.youtube.com/watch?v=DwJgUYFYHp0)
-[3] (https://www.youtube.com/watch?v=hJjdjaRtP7U)
-[1] (https://docs.spring.io/spring-ai/docs/current/api/org/springframework/ai/vectorstore/VectorStoreRetriever.html)
-[1] (https://www.youtube.com/watch?v=e4rxPpus_hA)
-[2] (https://github.com/eliavamar/repositories-wiki/blob/main/examples/langchain/sections/embeddings-vector-stores/vector-store-interface-retriever.md)
-[1] (https://docs.spring.io/spring-ai/docs/current/api/org/springframework/ai/vectorstore/VectorStoreRetriever.html)
-[1] (https://medium.com/@shankarwagh297/vector-stores-and-retrievers-in-langchain-powering-smarter-ai-retrieval-8b7e90b4f02e)
+- [VectorStore Retriever](https://lagnchain.readthedocs.io/en/stable/modules/indexes/retrievers/examples/vectorstore-retriever.html),
+- [LangChain | VectorStoreRetriever Practical: Standard Retrieval for RAG](https://lagnchain.readthedocs.io/en/stable/modules/indexes/retrievers/examples/vectorstore-retriever.html),
+- [LangChain | What is a Retriever? Why Vector Stores are Not Enough](https://www.youtube.com/watch?v=hJjdjaRtP7U)
+- [Interface VectorStoreRetriever](https://docs.spring.io/spring-ai/docs/current/api/org/springframework/ai/vectorstore/VectorStoreRetriever.html)
+- [Semantic search in documents using Vector Store Retriever | LangChain Tutorial](https://www.youtube.com/watch?v=e4rxPpus_hA)
+- [Vector Store Interface & Retriever](https://github.com/eliavamar/repositories-wiki/blob/main/examples/langchain/sections/embeddings-vector-stores/vector-store-interface-retriever.md)
+- [Vector Stores and Retrievers in LangChain: Powering Smarter AI Retrieval](https://medium.com/@shankarwagh297/vector-stores-and-retrievers-in-langchain-powering-smarter-ai-retrieval-8b7e90b4f02e)

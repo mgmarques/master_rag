@@ -68,3 +68,8 @@ To implement these, you typically use **LCEL (LangChain Expression Language)**. 
     *   Use a `set()` or `Unique` filter to remove duplicate documents.
 4.  **Generation:** 
     *   Pass the consolidated documents + original query to the final `LLM` for the response.
+*   
+## References
+- [Advanced RAG Techniques: Query Translation and Query Decomposition](https://medium.com/@samarth.acharya2005/advanced-rag-techniques-query-translation-and-query-decomposition-d8ab297dbf58)
+- [Query Decomposition: Tackling Semantic Dilution in RAG](https://blog.dataengineerthings.org/query-decomposition-tackling-semantic-dilution-in-rag-3fb4307126ff)
+- [In-Depth Understanding of RAG Query Transformation Optimization: Multi-Query, Problem Decomposition, and Step-Back](https://dev.to/jamesli/in-depth-understanding-of-rag-query-transformation-optimization-multi-query-problem-decomposition-and-step-back-27jg)

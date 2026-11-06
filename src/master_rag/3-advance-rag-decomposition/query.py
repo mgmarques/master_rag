@@ -165,7 +165,7 @@ prompt = ChatPromptTemplate.from_template(template)
 def query(query):
     """ 
     Generate optimized answer for a given query using the improved subqueries.
-    Suggested Question: 
+    Suggested Questions: 
         queries = [
         "How is context improving AI systems",
         "What are the two main components involved in Basic Reflection",

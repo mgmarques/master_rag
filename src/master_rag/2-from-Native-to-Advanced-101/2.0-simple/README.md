@@ -1,77 +1,28 @@
-# Project : Retrieval Q&A (FAISS vector store)
+# Project : Retrieval Q&A (Memory vector store)
+> A basic RAG (Retrieval-Augmented Generation) example with relevant data retrieval from a Vector Store built on top of InMemoryVectorStore and fed by an indexed internet data source, to augment context and answer queries. 
 
----
-
-> A basic RAG Q&A example with retrievalQA to collect information and respond to user queries using an  internet datasource.
-Built on top of Facebook AI Similarity Search (FAISS). This project leverages FAISS's capabilities for efficient similarity search.
-
-
-## Libraries:
-
-- **OpenAI** : [OpenAI](https://python.langchain.com/docs/integrations/platforms/openai) is a Python library that provides a simple interface to the OpenAI API. It also provides a command-line interface (CLI) for interacting with the API.
-
-- **python-dotenv** : [python-dotenv](https://pypi.org/project/python-dotenv/) is a Python library that loads environment variables from a .env file. It is used to load the OpenAI API key from the .env file.
-
-- **colorama** : [python-dotenv](https://pypi.org/project/colorama/) is a Python library to produce colored terminal text and outputs
-
-- **FAISS** : [faiss](https://python.langchain.com/v0.2/docs/integrations/vectorstores/faiss/) : Vector Store Facebook AI for similarity search
-
-**Docs** 
-- FAISS, vectostore: https://python.langchain.com/v0.2/docs/integrations/vectorstores/faiss/
-- RetrievalQA: https://api.python.langchain.com/en/latest/chains/langchain.chains.retrieval_qa.base.RetrievalQA.html
-
-## **Install Python** 
-
-- A [Quick Guide for Installing](https://github.com/PackeTsar/Install-Python/blob/master/README.md#install-python-) Python on Common Operating Systems
-- Download the latest version of [Python 3.12](https://www.python.org/downloads/)
-
-## Create a virtual environment :
-
-(Windows)
-```
-python -m venv env
+## Simple Retrieval Flow witout spliter:
+```text
+ +----------+   +-----------+   +--------+   +-----------+   +--------------+
+ | Document |--→| Embedding |--→| Vector |--→| Retrieves |--→| Generation   |
+ | Loaders  |   | Models    |   | Store  |   | (Augment) |   | (LLM Models) |
+ +----------+   +-----------+   +--------+   +-----------+   +--------------+
 ```
 
-(MacOS)
-```
-python3 -m venv env
-```
+## InMemoryVectorStore
+This is a generic utility class found in orchestration frameworks like LangChain or LlamaIndex.
+* How it works: It stores embeddings directly inside a standard Python dictionary or list in your computer's RAM.
+* Pros: Zero setup required. It is perfect for unit tests, isolated script execution, or building a quick proof-of-concept.
+* Cons: Completely temporary. The moment your Python application or Jupyter Notebook restarts, all saved data is 
+  permanently lost. It does not scale beyond a few dozen or hundred items without slowing down significantly.
 
-## Activate the virtual environment :
+> Use InMemoryVectorStore if you are writing a quick test file,trying out an API, or doing a 10-line tutorial. 
 
-```
-source env/bin/activate
-```
+## Main Libraries:
+- **OpenAI**: [OpenAI](https://python.langchain.com/docs/integrations/platforms/openai) - is a Python library that provides a simple interface to the OpenAI API. It also provides a command-line interface (CLI) for interacting with the API.
+- **python-dotenv**: [python-dotenv](https://pypi.org/project/python-dotenv/) - is a Python library that loads environment variables from a .env file. It is used to load the OpenAI API key from the .env file.
+- **colorama**: [python-dotenv](https://pypi.org/project/colorama/) - is a Python library to produce colored terminal text and outputs
+- **InMemoryVectorStore**: [LangChain: InMemoryVectorStore](https://reference.langchain.com/python/langchain-core/vectorstores/in_memory/InMemoryVectorStore) - In-memory vector store implementation, that uses a dictionary, and computes cosine similarity for search using numpy.
 
-## Installation:
-(Windows)
-```
-pip install -r requirements.txt
-```
-
-(MacOS)
-
-```
-pip3 install -r requirements.txt
-```
-
-## [get an API key](https://platform.openai.com/account/api-keys)
-
-.env file
-
-OPENAI_API_KEY=sk-brHeh...A39v5iXsM2
-
-`export OPENAI_API_KEY='sk-brHeh...A39v5iXsM2'`
-
-
-## Run the script:
-
-(Windows)
-```
-python main.py
-```
-
-(MacOS)
-```
-python3 main.py
-```
+## References
+- [LangChain: Vector Store Integrations](https://docs.langchain.com/oss/python/integrations/vectorstores) - A vector stores embedded data and performs similarity search.

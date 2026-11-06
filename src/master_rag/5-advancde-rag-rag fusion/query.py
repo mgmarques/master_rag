@@ -41,7 +41,6 @@ text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
 # Make splits
 splits = text_splitter.split_documents(docs)
 
-
 # Create the vector store: Index and load embeddings
 COLLECTION_NAME = "rag_fusion_blog"
 

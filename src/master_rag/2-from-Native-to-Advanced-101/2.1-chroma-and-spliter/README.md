@@ -1,68 +1,34 @@
 # Project : Q&A RAG (Chroma vector store)
+> A more complete example of RAG (Retrieval Augmented Generation) with relevant data snippets retrieved from a Vector Repository built on Chroma, indexed and loaded with split text from the internet data source, to augment context and answer queries.
 
----
+## Typical Retrieval Flow:
+```text
+ +----------+   +---------+   +-----------+   +--------+   +-----------+   +--------------+
+ | Document |--→| Text    |--→| Embedding |--→| Vector |--→| Retrieves |--→| Generation   |
+ | Loaders  |   | Spliter |   | Models    |   | Store  |   | (Augment) |   | (LLM Models) |
+ +----------+   +---------+   +-----------+   +--------+   +-----------+   +--------------+
+```
 
-- **OpenAI** : [OpenAI](https://python.langchain.com/docs/integrations/platforms/openai) is a Python library that provides a simple interface to the OpenAI API. It also provides a command-line interface (CLI) for interacting with the API.
+## Chroma / ChromaDB
+Chroma is a full-featured vector database designed specifically as a developer-centric companion for LLM workloads. 
+* Hierarchy: Tenant -> Database -> Collection -> Document
+* How it works: Under the hood, Chroma actually utilizes indexing libraries (like HNSW or FAISS concepts) but wraps 
+  them in a fully structured database framework. 
+* Pros: Highly "developer-first." It manages your raw text documents, automatically generates or stores your embeddings, 
+  saves your data natively to your disk via SQLite, and allows you to filter search results by metadata tags 
+  (e.g., where={"author": "John"}). 
+* Cons: It runs locally inside your app's memory space, meaning it is not natively designed to handle production-grade, 
+  distributed multi-billion vector clusters. 
 
-- **python-dotenv** : [python-dotenv](https://pypi.org/project/python-dotenv/) is a Python library that loads environment variables from a .env file. It is used to load the OpenAI API key from the .env file.
+> Use Chroma / ChromaDB if you are building an actual desktop app, a local assistant, or a RAG prototype where you need your documents saved across app restarts and want to filter by metadata. 
 
-- **colorama** : [python-dotenv](https://pypi.org/project/colorama/) is a Python library to produce colored terminal text and outputs
-
+## Main Libraries:
+- **OpenAI**: [OpenAI](https://python.langchain.com/docs/integrations/platforms/openai) - is a Python library that provides a simple interface to the OpenAI API. It also provides a command-line interface (CLI) for interacting with the API.
+- **python-dotenv**: [python-dotenv](https://pypi.org/project/python-dotenv/) - is a Python library that loads environment variables from a .env file. It is used to load the OpenAI API key from the .env file.
+- **colorama**: [python-dotenv](https://pypi.org/project/colorama/) - is a Python library to produce colored terminal text and outputs
 - **ChromaDB** : [chromaDB](https://python.langchain.com/v0.2/docs/integrations/vectorstores/chroma/) : Chroma is a AI-native open-source vector database focused on developer productivity
 
-
-## **Install Python** 
-
-- A [Quick Guide for Installing](https://github.com/PackeTsar/Install-Python/blob/master/README.md#install-python-) Python on Common Operating Systems
-- Download the latest version of [Python 3.12](https://www.python.org/downloads/)
-
-## Create a virtual environment :
-
-(Windows)
-```
-python -m venv env
-```
-
-(MacOS)
-```
-python3 -m venv env
-```
-
-## Activate the virtual environment :
-
-```
-source env/bin/activate
-```
-
-## Installation:
-(Windows)
-```
-pip install -r requirements.txt
-```
-
-(MacOS)
-
-```
-pip3 install -r requirements.txt
-```
-
-## [get an API key](https://platform.openai.com/account/api-keys)
-
-.env file
-
-OPENAI_API_KEY=sk-brHeh...A39v5iXsM2
-
-`export OPENAI_API_KEY='sk-brHeh...A39v5iXsM2'`
-
-
-## Run the script:
-
-(Windows)
-```
-python main.py
-```
-
-(MacOS)
-```
-python3 main.py
-```
+## References
+- [Chroma integration with LangChais](https://docs.langchain.com/oss/python/integrations/vectorstores/chroma)
+- [Introduction to ChromaDB](https://www.geeksforgeeks.org/nlp/introduction-to-chromadb/)
+- [Chroma DB Tutorial: A Step-By-Step Guide](https://www.datacamp.com/tutorial/chromadb-tutorial-step-by-step-guide)

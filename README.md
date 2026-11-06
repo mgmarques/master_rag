@@ -1,161 +1,71 @@
-# Master RAG: Ultimate Retrieval-Augmented Generation Course
+# The Ultimate RAG Mastery Blueprint: From Native to Agentic
+This blueprint is divided into six progressive phases, moving from a basic "Chat with PDF" setup to a stateful, multi-agent system capable of processing multimodal data.
+
+## Phase 1: Foundations of LLM Development
+Before building RAG, you must master the interface between the application and the model.
+*   **Core LLM Capabilities:** Understanding tokens, context windows, temperature, and the difference between Base models and Instruct-tuned models.
+*   **Environment Setup:** Establishing a professional Python environment (virtualenv/conda) and integrating the `ChatOpenAI` API.
+*   **The "Native" RAG Pipeline (RAG 101):** 
+    *   Implementing the basic flow: **Load $\rightarrow$ Split $\rightarrow$ Embed $\rightarrow$ Store $\rightarrow$ Retrieve $\rightarrow$ Generate**.
+    *   **Hands-on:** Building a basic Q&A system using **FAISS** or **ChromaDB** for local vector storage.
+
+## Phase 2: Document Engineering & Smart Indexing
+The quality of your RAG is capped by the quality of your data. "Garbage in, garbage out."
+*   **Document Transformers:** Using tools to clean and normalize text before it is embedded.
+*   **Advanced Chunking Strategies:** Moving beyond fixed-size chunks.
+    *   **Character Splitting:** Basic fixed-size blocks.
+    *   **Recursive Character Splitting:** Splitting by paragraphs, then sentences, to preserve structural meaning.
+    *   **Semantic Chunking:** Using embeddings to find "breakpoints" in text where the meaning changes, ensuring each chunk is a coherent concept.
+*   **Scaling Embeddings:** Strategies for handling massive datasets, including batch processing and choosing the right embedding dimension.
+
+## Phase 3: Advanced Retrieval & Query Optimization
+This is where you solve the "poorly phrased query" and "irrelevant result" problems.
+*   **Pre-Retrieval Optimization:**
+    *   **Query Transformation:** Rewriting user queries for better vector matching.
+    *   **Query Decomposition:** Breaking a complex question ("Compare product A and B") into two separate searches ("What is product A?" and "What is product B?").
+    *   **RAG-Fusion:** Generating multiple query variations to increase recall.
+*   **Retrieval Optimization:** Implementing **Hybrid Search** (combining Vector search for semantics and BM25 for keyword precision).
+*   **Post-Retrieval Optimization:**
+    *   **RRF (Reciprocal Rank Fusion):** Merging multiple result lists.
+    *   **Re-Ranking:** Using Cross-Encoders (like Cohere) to precisely score the top 5 documents.
+    *   **Context Compression:** Stripping noise from chunks to save LLM tokens.
+
+## Phase 4: Enhanced Quality & Multimodal RAG
+Real-world data is not just clean text; it is trapped in PDFs, tables, and images.
+*   **Unstructured Data Processing:** Using libraries (like Unstructured.io or PyMuPDF) to parse complex layouts.
+*   **Structured RAG:**
+    *   **Table Extraction:** Converting PDF tables into Markdown or JSON so the LLM can reason over rows and columns.
+    *   **Visual RAG:** Integrating **GPT-4 Vision** to analyze images, charts, and diagrams embedded in documents.
+    *   **Multimodal Indexing:** Storing image descriptions (summaries) in the vector store to make images searchable.
+
+## Phase 5: Multi-Agent Orchestration with LangGraph
+Moving from a "Chain" (Linear) to a "Graph" (Cyclical/Agentic).
+*   **Stateful Applications:** Using **LangGraph** to maintain a "memory" (state) of the conversation and the retrieval progress.
+*   **Collaborative Agents:** Designing a system where different agents have specialized roles:
+    *   *The Researcher:* Handles the retrieval and RAG-Fusion.
+    *   *The Grader (CRAG):* Evaluates the quality of retrieved documents.
+    *   *The Writer:* Synthesizes the final answer.
+    *   *The Critic:* Checks for hallucinations and sends the process back to the Researcher if the answer is lacking.
+*   **Control Flow:** Implementing conditional edges (If $\rightarrow$ Then) to decide whether to search the web or generate the final response.
+
+## Phase 6: Production Lifecycle (Debug, Test, Monitor)
+An LLM app is never "finished"; it is continuously optimized.
+*   **Observability with LangSmith:**
+    *   **Tracing:** Visualizing every step of the chain to see exactly where a retrieval failed.
+    *   **Debugging:** Identifying which prompt variation or chunk size led to a hallucination.
+    *   **Dataset Creation:** Turning real-user queries into test sets for regression testing.
+*   **Evaluation Frameworks:**
+    *   **Faithfulness:** Does the answer come *only* from the retrieved context?
+    *   **Answer Relevance:** Does the answer actually address the user's question?
+    *   **Context Precision:** Were the retrieved documents actually useful?
 
 
-1. Setup and Python installation 
-2. Create and Activate a Virtual Environment
-3. Create API keys & set the environment variables 
-4. Start uvicorn server
-
-### [1]-Setup and Python installation
-
-#### macOS
-1. **Check if Python is already installed**
-   ```sh
-   python3 --version
-   ```
-   If Python is not installed, proceed with the steps below.
-
-2. **Install Homebrew (if not installed)**
-   ```sh
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   ```
-
-3. **Install Python**
-   ```sh
-   brew install python3
-   ```
-
-4. **Check Python Version**
-   ```sh
-   python3 --version
-   ```
-
-#### Windows
-1. **Download Python** from the official website: [https://www.python.org/downloads/](https://www.python.org/downloads/)
-
-2. **Run the installer** and check the box **"Add Python to PATH"** before proceeding with the installation.
-
-3. **Check Python Version**
-   ```sh
-   python --version
-   ```
----
-
-## [2]-Create and Activate a Virtual Environment
-
-#### macOS
-1. **Navigate to your project directory**
-   ```sh
-   cd /path/to/your/project
-   ```
-
-2. **Create a virtual environment**
-   ```sh
-   python3 -m venv .venv
-   ```
-
-3. **Activate the virtual environment**
-   ```sh
-   source .venv/bin/activate
-   ```
-
-4. **Verify that the virtual environment is active** (you should see `(venv)` in the terminal prompt).
-
-#### Windows
-1. **Navigate to your project directory**
-   ```sh
-   cd C:\path\to\your\project
-   ```
-
-2. **Create a virtual environment**
-   ```sh
-   python -m venv .venv
-   ```
-
-3. **Activate the virtual environment**
-   ```sh
-   .venv\Scripts\activate
-   ```
-
-4. **Verify that the virtual environment is active** (Command Prompt should show `(venv)` before the directory path).
-
----
-
-## Deactivating the Virtual Environment
-For both macOS and Windows, deactivate the virtual environment by running:
-```sh
- deactivate
-```
-
----
-
-### [3]-Package Installation
-(Mac)
-```sh
-pip3 install -r requirements.txt
-
-export PYTHONPATH=$PYTHONPATH:/path/to/autogen_agentchat
-```
-
-(Windows)
-```sh
-pip install -r requirements.txt
-```
-
----
-
-## Exiting the Virtual Environment
-Simply run:
-```sh
-deactivate
-```
-
-
-### [3]-Create API keys & set the environment variables 
-
-
-#### 3.1 Setting Up OpenAI Secret Key  
-1. Create an OpenAI Account[OpenAI's API Keys page](https://platform.openai.com/signup/),
-2. Go to [OpenAI's API Keys page](https://platform.openai.com/settings/organization/api-keys),
-3. Click **Create new secret key** and copy it, 
-4. You will need to add your billing information (MANAGE > Settings > Billing).  
-
-
-#### 3.2 LangSmith
-1. Create a [LangSmith Account](https://smith.langchain.com/),
-2. Select **Tracing** from the sidebar menu and **Create a new project**
-
-**3.2.1 Create a project**
-![Create a project](images/1.png)
-
-**3.2.2 Provide a name**
-![Provide a name](images/2.png)
-
-**3.2.3 Configure Project**
-![Configure Project](images/3.png)
-
-#### Set environment variables 
-
-##### macOS & Linux  
-You can store the key in your shell configuration file:  
-
-```sh
-echo 'export OPENAI_API_KEY="your-secret-key"' >> ~/.bashrc
-source ~/.bashrc
-````
-
-or add to `.env` file (update the `.env.example` file)
-
-```sh
-OPENAI_API_KEY="YOUR_OPENAI_API_KEY_H"
-LANGSMITH_TRACING=true
-LANGSMITH_ENDPOINT=https://api.smith.langchain.com
-LANGSMITH_API_KEY="YOUR_LANGSMITH_API_KEY"
-LANGSMITH_PROJECT="PROJECT_NAME"
-
-```
-
-
-### [4]-Start uvicorn server
-
-`uvicorn server:app --reload --port 8000`
+### Summary Mapping: Concept $\rightarrow$ Tool $\rightarrow$ Goal
+| Need | Implementation Technique | Tool/Framework | Goal |
+| :--- | :--- | :--- | :--- |
+| **Data Quality** | Semantic Chunking $\rightarrow$ Transformers | LangChain / Unstructured | High-fidelity context |
+| **Search Recall** | Query Decomposition $\rightarrow$ RAG-Fusion | LangChain / Hybrid Search | Find the needle in the haystack |
+| **Search Precision** | Re-Ranking $\rightarrow$ Grading (CRAG) | Cohere / GPT-4o | Eliminate noise/hallucinations |
+| **Complex Data** | PDF Table Extraction $\rightarrow$ Vision | GPT-4 Vision / PyMuPDF | Handle images & tables |
+| **Complex Logic** | Multi-Agent State Graphs | LangGraph | Solve multi-step problems |
+| **Reliability** | Tracing $\rightarrow$ Eval $\rightarrow$ Monitoring | LangSmith | Production-grade stability |

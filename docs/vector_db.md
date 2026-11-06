@@ -13,7 +13,22 @@ heavily on your scale, infrastructure, and prototyping speed. To clarify your op
 the same thing (Chroma is the open-source product, and chromadb is its official Python library wrapper), while FAISS, 
 InMemoryVectorStore, and Chroma serve drastically different purposes in an AI stack.
 
-Here is the direct comparison to help you choose the correct tool for your project.
+## Architecture Overview
+
+The vector store system is organized into three primary layers: the abstract interface layer (`VectorStore`), the retriever adapter layer (`VectorStoreRetriever`), and concrete implementations (e.g., `InMemoryVectorStore`). The architecture supports dynamic imports to reduce initial load time and avoid circular dependencies.
+
+```mermaid
+graph TD
+    A[VectorStore<br/>Abstract Base] --> B[InMemoryVectorStore<br/>Implementation]
+    A --> C[Other Vector Store<br/>Implementations]
+    A --> D[VectorStoreRetriever<br/>Adapter]
+    D --> E[BaseRetriever<br/>Interface]
+    B --> F[Embeddings<br/>Interface]
+    D --> G[Search Strategies]
+    G --> H[Similarity Search]
+    G --> I[MMR Search]
+    G --> J[Score Threshold<br/>Search]
+```
 
 ## Core Comparison Overview
 | Feature            | FAISS	                                 | InMemoryVectorStore	               | Chroma / ChromaDB                        |
@@ -44,6 +59,7 @@ This is a generic utility class found in orchestration frameworks like LangChain
 
 3. **Chroma / ChromaDB**
 Chroma is a full-featured vector database designed specifically as a developer-centric companion for LLM workloads. 
+* Hierarchy: Tenant -> Database -> Collection -> Document
 * How it works: Under the hood, Chroma actually utilizes indexing libraries (like HNSW or FAISS concepts) but wraps 
   them in a fully structured database framework. 
 * Pros: Highly "developer-first." It manages your raw text documents, automatically generates or stores your embeddings, 
@@ -58,6 +74,15 @@ Chroma is a full-featured vector database designed specifically as a developer-c
   your documents saved across app restarts and want to filter by metadata. 
 * Use FAISS if you have strict latency requirements, are handling millions of embeddings on a single server, or have an 
   expert machine learning team capable of managing data persistence and metadata mappings manually. 
+
+## Other Popular Vector Databases
+* Pinecone — Cloud-based vector DB
+* Milvus — Open-source scalable DB
+* Qdrant — Rust-based fast retrieval engine
+* Weaviate — Vector + Graph database
+* Elasticsearch — Traditional search engine with vector support
+* MongoDB & PostgreSQL — Traditional DBs with vector extensions
+* Azure Cosmos DB — Cloud-native with vector features
 
 ## References:
 - [LangChain: Vector Store Integrations](https://docs.langchain.com/oss/python/integrations/vectorstores/index#vector-store-integrations)
