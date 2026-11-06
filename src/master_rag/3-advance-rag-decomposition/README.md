@@ -1,4 +1,4 @@
-# Project : Advanced RAG - Query Transformation: Decomposition (ChromaDB vector store)
+# Project : Advanced RAG - Query Transformation: Decomposition
 Query decomposition is a strategy to improve question-answering using the power of LLM by re-writing and rephrasing the user input to improve retrieval process by breaking down a question into well-written sub-questions.
 
 ## Main Libraries:
