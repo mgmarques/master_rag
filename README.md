@@ -4,10 +4,10 @@ This blueprint is divided into six progressive phases, moving from a basic "Chat
 ## Phase 1: Foundations of LLM Development
 Before building RAG, you must master the interface between the application and the model.
 *   **Core LLM Capabilities:** Understanding tokens, context windows, temperature, and the difference between Base models and Instruct-tuned models.
-*   **Environment Setup:** Establishing a professional Python environment (virtualenv/conda) and integrating the `ChatOpenAI` API.
+*   **Environment Setup:** Establishing a professional Python environment (uv) and integrating the `ChatOpenAI` API.
 *   **The "Native" RAG Pipeline (RAG 101):** 
     *   Implementing the basic flow: **Load $\rightarrow$ Split $\rightarrow$ Embed $\rightarrow$ Store $\rightarrow$ Retrieve $\rightarrow$ Generate**.
-    *   **Hands-on:** Building a basic Q&A system using **FAISS** or **ChromaDB** for local vector storage.
+    *   **Hands-on:** Building a basic Q&A system using **InMemoryVectorStore** or **ChromaDB** for local vector storage.
 
 ## Phase 2: Document Engineering & Smart Indexing
 The quality of your RAG is capped by the quality of your data. "Garbage in, garbage out."
@@ -19,7 +19,7 @@ The quality of your RAG is capped by the quality of your data. "Garbage in, garb
 *   **Scaling Embeddings:** Strategies for handling massive datasets, including batch processing and choosing the right embedding dimension.
 
 ## Phase 3: Advanced Retrieval & Query Optimization
-This is where you solve the "poorly phrased query" and "irrelevant result" problems.
+Redundancy, incosistencies, and overlap of retieved documents. This is where you solve the "poorly phrased query" and "irrelevant result" problems. 
 *   **Pre-Retrieval Optimization by Query Transformation:** Rewriting user queries for better vector matching. 
     *   **Step-back prompting:** Involves creating a more generic, high-level version of the query to retrieve broader context.
     *   **Query Decomposition:** Using the power of LLMs by rewriting and rephrasing the user input to improve the retrieval process by breaking down a question into well-written sub-questions.

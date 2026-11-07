@@ -1,4 +1,4 @@
-# Optimize RAG: Document Trnsformes & Chunking Strategies
+# Optimize RAG: Document Transformes & Chunking Strategies
 ## Split documents by Character Text Splitter
 import os
 import warnings
@@ -44,6 +44,7 @@ chat_prompt_template = ChatPromptTemplate.from_messages(
     [system_message_prompt, human_message_prompt]
 )
 
+# ---------------------------------- Pre-Process: INDEXING ----------------------------------
 chunk_size = 200
 
 state_of_the_union = TextLoader("./docs/state_of_the_union.txt").load()
@@ -57,12 +58,6 @@ def load_documents():
 
 documents = load_documents()
 vector_store = Chroma.from_documents(documents, embeddings)
-# Wraps around a VectorStore to search and fetch relevant document chunks based on semantic similarity.
-# It automatically passes the query to an embedding model
-retriever = vector_store.as_retriever(
-    search_type="similarity", 
-    search_kwargs={"k": 2}  # Restricts output to the top 2 most relevant chunks
-)
 
 def print_chunks():
     _ = [print(f"{index + 1}/{len(documents)} - {document.page_content}\n") for index, document in enumerate(documents)]
@@ -70,8 +65,18 @@ def print_chunks():
     print(f"{Fore.GREEN}- Chunk Size: {chunk_size}")
     print(f"- Number of chunks: {len(documents)}")
 
+# ------------------------------- RETRIEVAL and GENERATION ------------------------------
+# Wraps around a VectorStore to search and fetch relevant document chunks based on semantic similarity.
+# It automatically passes the query to an embedding model
+retriever = vector_store.as_retriever(
+    search_type="similarity", 
+    search_kwargs={"k": 2}  # Restricts output to the top 2 most relevant chunks
+)
 
+
+# -------------------------------- RAG Pipeline ---------------------------------
 def main(query):
+    """Query the model with a question and assess the relevance of retrieved documents."""    
     print_chunks()
     chain = (
         {"context": retriever, "question": RunnablePassthrough()}

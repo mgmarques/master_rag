@@ -143,3 +143,10 @@ In 90% of LangChain projects, you should actually use the **`RecursiveCharacterT
 **Use `RecursiveCharacterTextSplitter` by default for almost every project.** 
 
 It is the "gold standard" for RAG (Retrieval Augmented Generation) because it maximizes the quality of the retrieved context by ensuring that the chunks sent to the LLM are coherent and logically grouped.
+
+
+## References
+- [langchain-text-splitters](https://reference.langchain.com/python/langchain-text-splitters)
+- [Text splitter integration](https://docs.langchain.com/oss/python/integrations/splitters)
+- [Splitting by character - Text splitter integration guide](https://docs.langchain.com/oss/python/integrations/splitters/character_text_splitter)
+- [Splitting recursively - Text splitter integration guide](https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter)
