@@ -23,7 +23,6 @@ import warnings
 
 from colorama import Fore
 from langchain_community.document_loaders import WebBaseLoader
-from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_community.vectorstores import Chroma
 from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
@@ -34,6 +33,7 @@ from langchain_core.prompts.chat import (
 )
 from langchain_ollama import OllamaEmbeddings
 from langchain_openai import ChatOpenAI
+from langchain_tavily import TavilySearch
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 warnings.filterwarnings("ignore")
@@ -152,7 +152,7 @@ def assess_retrieve_docs(query):
     return binary_score, docs
 
 ### Web Search Tool - Knowledge Searching ####
-web_search_tool = TavilySearchResults(k=3) 
+web_search_tool = TavilySearch(k=3) 
 
 def search_web(query):
     docs = web_search_tool.invoke({"query": query})
