@@ -3,20 +3,19 @@ import os
 USER_AGENT = "master-rag-app"
 os.environ["USER_AGENT"] = USER_AGENT
 
-import bs4
-from dotenv import load_dotenv
+import warnings
 from operator import itemgetter
-from langchain_community.document_loaders import WebBaseLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_community.vectorstores import Chroma
-from langchain_openai import ChatOpenAI
-from langchain_ollama import OllamaEmbeddings
-from utils import format_qa_pair, format_qa_pairs
 
 from colorama import Fore
-import warnings
+from dotenv import load_dotenv
+from langchain_community.document_loaders import WebBaseLoader
+from langchain_community.vectorstores import Chroma
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_ollama import OllamaEmbeddings
+from langchain_openai import ChatOpenAI
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from utils import format_qa_pair, format_qa_pairs
 
 warnings.filterwarnings("ignore")
 

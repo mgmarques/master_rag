@@ -100,6 +100,51 @@ You should use the `MarkdownTextSplitter` whenever your source data is in `.md` 
 **Why?** 
 In a technical document, the header (e.g., `## Troubleshooting`) provides critical context for the text that follows it. If you use a generic splitter, you might split the "Troubleshooting" header into one chunk and the actual solution into another. The `MarkdownTextSplitter` tries to prevent this, making the retrieval step in RAG significantly more accurate.
 
+---
+
+## Other Types of Text Splitters
+1. Word-Based Splitters
+* **Whitespace Splitter**: Splits text based on spaces and common whitespace characters (e.g., tabs, newlines).
+Example: Splitting "Hello world!\nWelcome." by whitespace results in ["Hello", "world!", "Welcome."].
+
+* **Custom Delimiter Splitter**: Splits text using custom word boundaries or punctuation.
+Example: Splitting "Hello-world!" by "-" results in ["Hello", "world!"].
+
+2. Line-Based Splitters
+* **Single Line Splitter**: Splits text into individual lines.
+Example: Splitting "Hello world!\nWelcome." by lines results in ["Hello world!", "Welcome."].
+
+* **Multi-Line Splitter**: Splits text by multiple lines or paragraph markers.
+Example: Splitting "Hello world!\n\nWelcome." by paragraphs results in ["Hello world!", "Welcome."].
+
+3. Sentence-Based Splitters
+* **Punctuation-Based Splitter**: Splits text into sentences using punctuation marks (e.g., periods, exclamation marks, question marks).
+Example: Splitting "Hello world! How are you?" by sentences results in ["Hello world!", "How are you?"].
+
+* **Advanced Sentence Splitter**: Uses natural language processing (NLP) to accurately split sentences, considering abbreviations and other linguistic nuances.
+Example: Splitting "Dr. Smith is here. He said, 'Hello world!'" results in ["Dr. Smith is here.", "He said, 'Hello world!'"].
+
+4. Paragraph-Based Splitters
+* **Newline-Based Splitter**: Splits text into paragraphs based on newline characters.
+Example: Splitting "Hello world!\n\nWelcome to the text splitter." by paragraphs results in ["Hello world!", "Welcome to the text splitter."].
+
+* **Indentation-Based Splitter**: Uses indentation or specific paragraph markers to split text.
+Example: Splitting " Hello world!\n Welcome to the text splitter." by indentation results in [" Hello world!", " Welcome to the text splitter."].
+
+5. Regex-Based Splitters
+* **Simple Regex Splitter**: Uses regular expressions to define custom split points.
+Example: Splitting "Hello1world2!" by digits (regex \d) results in ["Hello", "world", "!"].
+
+* **Complex Regex Splitter**: Utilizes more advanced regex patterns to handle complex splitting criteria.
+Example: Splitting "Hello, world! (Welcome to the text splitter)" by non-word characters (regex \W+) results in ["Hello", "world", "Welcome", "to", "the", "text", "splitter"].
+
+6. Token-Based Splitters
+* **Word Tokenizer**: Splits text into tokens, which are usually words, but can include punctuation based on the tokenizer settings.
+Example: Splitting "Hello, world!" results in ["Hello", ",", "world", "!"].
+
+* **Subword Tokenizer**: Splits text into smaller units, such as subwords or syllables.
+Example: Splitting "unhappiness" into ["un", "happiness"].
+
 ## References
 - [langchain-text-splitters](https://reference.langchain.com/python/langchain-text-splitters)
 - [Split markdown - text splitter integration](https://docs.langchain.com/oss/python/integrations/splitters/markdown_header_metadata_splitter)

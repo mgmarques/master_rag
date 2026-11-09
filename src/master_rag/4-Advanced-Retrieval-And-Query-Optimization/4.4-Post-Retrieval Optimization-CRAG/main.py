@@ -1,5 +1,5 @@
 from colorama import Fore
-from query import query 
+from query import query
 
 
 def start():

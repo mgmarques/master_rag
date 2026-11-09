@@ -1,5 +1,5 @@
 # Project : Text splitters with LangChain
-## Code splitters with Recursive Character Text Splitter
+## Code Splitters with Recursive Character Text Splitter
 When splitting code, you cannot use a standard text splitter because cutting a function or a class in half makes the code snippet logically useless for an LLM.
 
 To solve this, LangChain provides a specialized method within the `RecursiveCharacterTextSplitter` called **`.from_language()`**. This allows the splitter to recognize the specific syntax of the programming language you are using.

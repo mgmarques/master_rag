@@ -1,10 +1,11 @@
-import uvicorn
 from datetime import date
-from pydantic import BaseModel, Field
 from typing import Annotated
-from fastapi import FastAPI, Request, HTTPException, Path
+
+import uvicorn
+from fastapi import FastAPI, HTTPException, Path, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from pydantic import BaseModel, Field
 
 
 # Define a Response Model for automatic schema generation

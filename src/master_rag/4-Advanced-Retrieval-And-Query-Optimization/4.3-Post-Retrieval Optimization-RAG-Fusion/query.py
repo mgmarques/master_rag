@@ -1,23 +1,22 @@
 # RAG-Fusion: RRF Multi-query
 import os
-from dotenv import load_dotenv
-from colorama import Fore
 import warnings
+
+from colorama import Fore
+from dotenv import load_dotenv
 
 warnings.filterwarnings("ignore")
 USER_AGENT = "master-rag-app"
 os.environ["USER_AGENT"] = USER_AGENT
 load_dotenv()
 
-from langchain_core.load import dumps, loads
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.vectorstores import Chroma
-from langchain_openai import ChatOpenAI
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama import OllamaEmbeddings
-
+from langchain_openai import ChatOpenAI
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # ------------------------ LLM and Embedding Models ------------------------
 LANGUAGE_MODEL = "gemma4:31b-cloud"  # "llama3.2" # 

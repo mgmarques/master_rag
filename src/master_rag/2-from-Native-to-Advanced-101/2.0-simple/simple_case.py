@@ -1,21 +1,22 @@
 import os
+
 # Define o User Agent antes de qualquer import do LangChain para remover o aviso do console
 os.environ["USER_AGENT"] = "master-rag-app"
 import warnings
 
-from dotenv import load_dotenv
 from colorama import Fore
+from dotenv import load_dotenv
+from langchain_community.document_loaders import WebBaseLoader
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnablePassthrough
+
+# Instead FAISS
+from langchain_core.vectorstores import InMemoryVectorStore
 
 # LangChain Imports
 from langchain_ollama import OllamaEmbeddings
 from langchain_openai import ChatOpenAI
-from langchain_community.document_loaders import WebBaseLoader
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.runnables import RunnablePassthrough
-from langchain_core.output_parsers import StrOutputParser
-# Instead FAISS
-from langchain_core.vectorstores import InMemoryVectorStore
-
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 

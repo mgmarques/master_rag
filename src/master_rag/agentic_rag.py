@@ -1,15 +1,16 @@
 import os
 from typing import TypedDict
-from pydantic import BaseModel, Field
+
 from dotenv import load_dotenv
-from langchain_ollama import OllamaEmbeddings
-from langchain_openai import ChatOpenAI
 from langchain_core.documents import Document
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.tools import tool
 from langchain_core.vectorstores import InMemoryVectorStore
-from langgraph.graph import StateGraph, MessagesState, START, END
+from langchain_ollama import OllamaEmbeddings
+from langchain_openai import ChatOpenAI
+from langgraph.graph import START, MessagesState, StateGraph
 from langgraph.prebuilt import ToolNode, tools_condition
+from pydantic import BaseModel, Field
 
 load_dotenv(override=True)
 
@@ -107,7 +108,7 @@ def print_agentic_rag_results(question, result):
 if __name__ == "__main__":
     print("-"*60)
     q = ("An AcmeOrbit employee's borrowed laptop loan ended on 2026-10-01. "
-         "According to company policy, what is the return deadline date?")
+        "According to company policy, what is the return deadline date?")
     print("QUESTION:", q)
 
     print("-"*60)

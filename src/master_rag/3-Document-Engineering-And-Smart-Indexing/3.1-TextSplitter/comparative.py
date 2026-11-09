@@ -1,6 +1,5 @@
 from langchain_text_splitters import CharacterTextSplitter
 
-
 # Sample text
 text = "Hello world. This is a test. \n\n This is a new paragraph. \n\n This is another paragraph."
 
@@ -21,7 +20,6 @@ print("-"*60)
 print("\n")
 # ----------------------------------------------------
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-
 
 # A long piece of text with paragraphs and sentences
 text = """

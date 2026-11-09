@@ -1,0 +1,1500 @@
+{
+    "table_of_contents": [
+        {
+            "title": "Retrieval-Augmented Generation (RAG): Trends, \nArchitectures, and Use Cases\nA Comprehensive Study",
+            "heading_level": null,
+            "page_id": 0,
+            "polygon": [
+                [
+                    39.67139534746069,
+                    141.7145815651436
+                ],
+                [
+                    557.270263671875,
+                    141.7145815651436
+                ],
+                [
+                    557.270263671875,
+                    233.2945556640625
+                ],
+                [
+                    39.67139534746069,
+                    233.2945556640625
+                ]
+            ]
+        },
+        {
+            "title": "Anushka Rai",
+            "heading_level": null,
+            "page_id": 0,
+            "polygon": [
+                [
+                    250.08660473571314,
+                    240.92243553970079
+                ],
+                [
+                    343.11097252218786,
+                    240.92243553970079
+                ],
+                [
+                    343.11097252218786,
+                    261.18145751953125
+                ],
+                [
+                    250.08660473571314,
+                    261.18145751953125
+                ]
+            ]
+        },
+        {
+            "title": "Abstract",
+            "heading_level": null,
+            "page_id": 0,
+            "polygon": [
+                [
+                    268.61072054077454,
+                    268.24417508296
+                ],
+                [
+                    323.65299069190803,
+                    268.24417508296
+                ],
+                [
+                    323.65299069190803,
+                    286.712646484375
+                ],
+                [
+                    268.61072054077454,
+                    286.712646484375
+                ]
+            ]
+        },
+        {
+            "title": "Introduction",
+            "heading_level": null,
+            "page_id": 0,
+            "polygon": [
+                [
+                    24.26587023602925,
+                    450.928434078118
+                ],
+                [
+                    106.09728240966797,
+                    450.928434078118
+                ],
+                [
+                    106.09728240966797,
+                    468.9426574707031
+                ],
+                [
+                    24.26587023602925,
+                    468.9426574707031
+                ]
+            ]
+        },
+        {
+            "title": "1.1.Why RAG Matters in Today's World",
+            "heading_level": null,
+            "page_id": 1,
+            "polygon": [
+                [
+                    42.3603949558825,
+                    17.58504250510293
+                ],
+                [
+                    252.49431004752438,
+                    17.58504250510293
+                ],
+                [
+                    252.49431004752438,
+                    34.506103515625
+                ],
+                [
+                    42.3603949558825,
+                    34.506103515625
+                ]
+            ]
+        },
+        {
+            "title": "1.2.Global Trends and Market Impact",
+            "heading_level": null,
+            "page_id": 1,
+            "polygon": [
+                [
+                    42.56965120253094,
+                    272.0987243924094
+                ],
+                [
+                    240.09293025326667,
+                    272.0987243924094
+                ],
+                [
+                    240.09293025326667,
+                    289.1260986328125
+                ],
+                [
+                    42.56965120253094,
+                    289.1260986328125
+                ]
+            ]
+        },
+        {
+            "title": "2. Objectives",
+            "heading_level": null,
+            "page_id": 1,
+            "polygon": [
+                [
+                    41.57381206675801,
+                    678.7300119918049
+                ],
+                [
+                    126.8498143885538,
+                    678.7300119918049
+                ],
+                [
+                    126.8498143885538,
+                    696.5626373291016
+                ],
+                [
+                    41.57381206675801,
+                    696.5626373291016
+                ]
+            ]
+        },
+        {
+            "title": "3. Overview",
+            "heading_level": null,
+            "page_id": 2,
+            "polygon": [
+                [
+                    41.534717723164206,
+                    80.44372911189988
+                ],
+                [
+                    120.66815948486328,
+                    80.44372911189988
+                ],
+                [
+                    120.66815948486328,
+                    99.0826416015625
+                ],
+                [
+                    41.534717723164206,
+                    99.0826416015625
+                ]
+            ]
+        },
+        {
+            "title": "3.1.Historical Timeline of RAG Development",
+            "heading_level": null,
+            "page_id": 2,
+            "polygon": [
+                [
+                    41.502905069730744,
+                    96.82438961310994
+                ],
+                [
+                    273.9179988832257,
+                    96.82438961310994
+                ],
+                [
+                    273.9179988832257,
+                    114.81610107421875
+                ],
+                [
+                    41.502905069730744,
+                    114.81610107421875
+                ]
+            ]
+        },
+        {
+            "title": "3.2.Components of RAG Architecture",
+            "heading_level": null,
+            "page_id": 2,
+            "polygon": [
+                [
+                    41.1910923878552,
+                    511.5499031698714
+                ],
+                [
+                    237.80489320538805,
+                    511.5499031698714
+                ],
+                [
+                    237.80489320538805,
+                    528.6260681152344
+                ],
+                [
+                    41.1910923878552,
+                    528.6260681152344
+                ]
+            ]
+        },
+        {
+            "title": "Retriever",
+            "heading_level": null,
+            "page_id": 2,
+            "polygon": [
+                [
+                    24.639404047045957,
+                    532.6636278079433
+                ],
+                [
+                    75.80328369140625,
+                    532.6636278079433
+                ],
+                [
+                    75.80328369140625,
+                    549.5260620117188
+                ],
+                [
+                    24.639404047045957,
+                    549.5260620117188
+                ]
+            ]
+        },
+        {
+            "title": "Generator",
+            "heading_level": null,
+            "page_id": 2,
+            "polygon": [
+                [
+                    23.921636422875544,
+                    738.4678977361664
+                ],
+                [
+                    80.38758581050998,
+                    738.4678977361664
+                ],
+                [
+                    80.38758581050998,
+                    755.1580810546875
+                ],
+                [
+                    23.921636422875544,
+                    755.1580810546875
+                ]
+            ]
+        },
+        {
+            "title": "Fusion Techniques",
+            "heading_level": null,
+            "page_id": 3,
+            "polygon": [
+                [
+                    24.10867964891102,
+                    140.87521174796862
+                ],
+                [
+                    121.82165127617286,
+                    140.87521174796862
+                ],
+                [
+                    121.82165127617286,
+                    156.95611572265625
+                ],
+                [
+                    24.10867964891102,
+                    156.95611572265625
+                ]
+            ]
+        },
+        {
+            "title": "3.3.RAG Processing Lifecycle",
+            "heading_level": null,
+            "page_id": 3,
+            "polygon": [
+                [
+                    42.10645782316962,
+                    741.1478791071279
+                ],
+                [
+                    196.44038033665578,
+                    741.1478791071279
+                ],
+                [
+                    196.44038033665578,
+                    758.0380783081055
+                ],
+                [
+                    42.10645782316962,
+                    758.0380783081055
+                ]
+            ]
+        },
+        {
+            "title": "a. Query Encoding",
+            "heading_level": null,
+            "page_id": 3,
+            "polygon": [
+                [
+                    41.54434169509849,
+                    756.7672593616951
+                ],
+                [
+                    148.67663912448833,
+                    756.7672593616951
+                ],
+                [
+                    148.67663912448833,
+                    772.8220748901367
+                ],
+                [
+                    41.54434169509849,
+                    772.8220748901367
+                ]
+            ]
+        },
+        {
+            "title": "b. Relevant Document Retrieval",
+            "heading_level": null,
+            "page_id": 4,
+            "polygon": [
+                [
+                    42.393023685484145,
+                    53.873590946622116
+                ],
+                [
+                    215.12296954330327,
+                    53.873590946622116
+                ],
+                [
+                    215.12296954330327,
+                    70.506103515625
+                ],
+                [
+                    42.393023685484145,
+                    70.506103515625
+                ]
+            ]
+        },
+        {
+            "title": "c. Document Fusion + Prompt Injection",
+            "heading_level": null,
+            "page_id": 4,
+            "polygon": [
+                [
+                    42.278297693363065,
+                    155.88499509109946
+                ],
+                [
+                    254.85029044739844,
+                    155.88499509109946
+                ],
+                [
+                    254.85029044739844,
+                    171.71612548828125
+                ],
+                [
+                    42.278297693363065,
+                    171.71612548828125
+                ]
+            ]
+        },
+        {
+            "title": "d. Text Generation",
+            "heading_level": null,
+            "page_id": 4,
+            "polygon": [
+                [
+                    41.33742486679884,
+                    305.0063738529956
+                ],
+                [
+                    146.60479067555002,
+                    305.0063738529956
+                ],
+                [
+                    146.60479067555002,
+                    321.18609619140625
+                ],
+                [
+                    41.33742486679884,
+                    321.18609619140625
+                ]
+            ]
+        },
+        {
+            "title": "",
+            "heading_level": null,
+            "page_id": 5,
+            "polygon": [
+                [
+                    235.4739964098414,
+                    24.909708201407536
+                ],
+                [
+                    347.93408003261766,
+                    24.909708201407536
+                ],
+                [
+                    347.93408003261766,
+                    36.8729931805034
+                ],
+                [
+                    235.4739964098414,
+                    36.8729931805034
+                ]
+            ]
+        },
+        {
+            "title": "4. RAG Detection and Enhancement Models",
+            "heading_level": null,
+            "page_id": 5,
+            "polygon": [
+                [
+                    41.60121218203297,
+                    493.03992019884305
+                ],
+                [
+                    314.20774230188323,
+                    493.03992019884305
+                ],
+                [
+                    314.20774230188323,
+                    511.8126525878906
+                ],
+                [
+                    41.60121218203297,
+                    511.8126525878906
+                ]
+            ]
+        },
+        {
+            "title": "4.1.Retrieval Techniques",
+            "heading_level": null,
+            "page_id": 5,
+            "polygon": [
+                [
+                    42.45072742913772,
+                    510.2123637008327
+                ],
+                [
+                    170.73429028873778,
+                    510.2123637008327
+                ],
+                [
+                    170.73429028873778,
+                    527.1860656738281
+                ],
+                [
+                    42.45072742913772,
+                    527.1860656738281
+                ]
+            ]
+        },
+        {
+            "title": "Sparse Retrieval",
+            "heading_level": null,
+            "page_id": 5,
+            "polygon": [
+                [
+                    23.665903922592662,
+                    600.9687211944498
+                ],
+                [
+                    112.63033142858548,
+                    600.9687211944498
+                ],
+                [
+                    112.63033142858548,
+                    617.5860900878906
+                ],
+                [
+                    23.665903922592662,
+                    617.5860900878906
+                ]
+            ]
+        },
+        {
+            "title": "Dense Retrieval",
+            "heading_level": null,
+            "page_id": 5,
+            "polygon": [
+                [
+                    23.980622980997,
+                    729.3086869604123
+                ],
+                [
+                    110.5404052734375,
+                    729.3086869604123
+                ],
+                [
+                    110.5404052734375,
+                    745.7980804443359
+                ],
+                [
+                    23.980622980997,
+                    745.7980804443359
+                ]
+            ]
+        },
+        {
+            "title": "Hybrid Retrieval",
+            "heading_level": null,
+            "page_id": 6,
+            "polygon": [
+                [
+                    24.005427401372106,
+                    70.74033110458089
+                ],
+                [
+                    115.06735821394835,
+                    70.74033110458089
+                ],
+                [
+                    115.06735821394835,
+                    87.42608642578125
+                ],
+                [
+                    24.005427401372106,
+                    87.42608642578125
+                ]
+            ]
+        },
+        {
+            "title": "Vector Stores",
+            "heading_level": null,
+            "page_id": 6,
+            "polygon": [
+                [
+                    24.253093633003136,
+                    200.02123181011032
+                ],
+                [
+                    95.52315865235605,
+                    200.02123181011032
+                ],
+                [
+                    95.52315865235605,
+                    215.66607666015625
+                ],
+                [
+                    24.253093633003136,
+                    215.66607666015625
+                ]
+            ]
+        },
+        {
+            "title": "4.2.Generation Techniques",
+            "heading_level": null,
+            "page_id": 6,
+            "polygon": [
+                [
+                    41.78037955718917,
+                    410.16030620191106
+                ],
+                [
+                    181.86319830675868,
+                    410.16030620191106
+                ],
+                [
+                    181.86319830675868,
+                    427.4360656738281
+                ],
+                [
+                    41.78037955718917,
+                    427.4360656738281
+                ]
+            ]
+        },
+        {
+            "title": "BART (Bidirectional and Auto-Regressive Transformers)",
+            "heading_level": null,
+            "page_id": 6,
+            "polygon": [
+                [
+                    23.79045575812121,
+                    516.1599311319081
+                ],
+                [
+                    319.2731643023359,
+                    516.1599311319081
+                ],
+                [
+                    319.2731643023359,
+                    532.9460754394531
+                ],
+                [
+                    23.79045575812121,
+                    532.9460754394531
+                ]
+            ]
+        },
+        {
+            "title": "FLAN-T5 (Fine-tuned Language Net - Text-to-Text Transfer Transformer)",
+            "heading_level": null,
+            "page_id": 6,
+            "polygon": [
+                [
+                    24.13651786823417,
+                    607.278243950617
+                ],
+                [
+                    408.2761836208084,
+                    607.278243950617
+                ],
+                [
+                    408.2761836208084,
+                    623.3460845947266
+                ],
+                [
+                    24.13651786823417,
+                    623.3460845947266
+                ]
+            ]
+        },
+        {
+            "title": "GPT-style Models (e.g., GPT-3, GPT-4)",
+            "heading_level": null,
+            "page_id": 6,
+            "polygon": [
+                [
+                    23.830464966050922,
+                    696.7695446744733
+                ],
+                [
+                    227.87458059469458,
+                    696.7695446744733
+                ],
+                [
+                    227.87458059469458,
+                    713.7560882568359
+                ],
+                [
+                    23.830464966050922,
+                    713.7560882568359
+                ]
+            ]
+        },
+        {
+            "title": "Fine-tuning for Knowledge-Intensive Tasks",
+            "heading_level": null,
+            "page_id": 7,
+            "polygon": [
+                [
+                    23.598428740609503,
+                    17.48987459945339
+                ],
+                [
+                    247.46033990893616,
+                    17.48987459945339
+                ],
+                [
+                    247.46033990893616,
+                    34.506103515625
+                ],
+                [
+                    23.598428740609503,
+                    34.506103515625
+                ]
+            ]
+        },
+        {
+            "title": "4.3.Optimization Techniques",
+            "heading_level": null,
+            "page_id": 7,
+            "polygon": [
+                [
+                    41.68982660019728,
+                    108.57943860102421
+                ],
+                [
+                    191.82235133557836,
+                    108.57943860102421
+                ],
+                [
+                    191.82235133557836,
+                    125.256103515625
+                ],
+                [
+                    41.68982660019728,
+                    125.256103515625
+                ]
+            ]
+        },
+        {
+            "title": "Re-ranking with Cross-Encoders",
+            "heading_level": null,
+            "page_id": 7,
+            "polygon": [
+                [
+                    23.859338313566347,
+                    213.81642595190928
+                ],
+                [
+                    195.58105499498188,
+                    213.81642595190928
+                ],
+                [
+                    195.58105499498188,
+                    230.42608642578125
+                ],
+                [
+                    23.859338313566347,
+                    230.42608642578125
+                ]
+            ]
+        },
+        {
+            "title": "Index Refresh and Dynamic Retrieval",
+            "heading_level": null,
+            "page_id": 7,
+            "polygon": [
+                [
+                    24.053106293570185,
+                    348.0955287970715
+                ],
+                [
+                    221.234916168136,
+                    348.0955287970715
+                ],
+                [
+                    221.234916168136,
+                    365.8260803222656
+                ],
+                [
+                    24.053106293570185,
+                    365.8260803222656
+                ]
+            ]
+        },
+        {
+            "title": "Prompt Injection and Pre-Retrieval Rewriting",
+            "heading_level": null,
+            "page_id": 7,
+            "polygon": [
+                [
+                    23.889640510232383,
+                    483.62014740615257
+                ],
+                [
+                    264.86460449833714,
+                    483.62014740615257
+                ],
+                [
+                    264.86460449833714,
+                    500.90606689453125
+                ],
+                [
+                    23.889640510232383,
+                    500.90606689453125
+                ]
+            ]
+        },
+        {
+            "title": "5. Use Cases of RAG",
+            "heading_level": null,
+            "page_id": 7,
+            "polygon": [
+                [
+                    41.507320471314394,
+                    618.0360143836439
+                ],
+                [
+                    157.29085281333633,
+                    618.0360143836439
+                ],
+                [
+                    157.29085281333633,
+                    635.9460906982422
+                ],
+                [
+                    41.507320471314394,
+                    635.9460906982422
+                ]
+            ]
+        },
+        {
+            "title": "6. Analysis",
+            "heading_level": null,
+            "page_id": 8,
+            "polygon": [
+                [
+                    41.74860126485752,
+                    251.94530388551
+                ],
+                [
+                    114.68062401298312,
+                    251.94530388551
+                ],
+                [
+                    114.68062401298312,
+                    269.0726318359375
+                ],
+                [
+                    41.74860126485752,
+                    269.0726318359375
+                ]
+            ]
+        },
+        {
+            "title": "6.1.Evaluation Metrics",
+            "heading_level": null,
+            "page_id": 8,
+            "polygon": [
+                [
+                    42.46942559537719,
+                    267.19597078834596
+                ],
+                [
+                    161.45185625282883,
+                    267.19597078834596
+                ],
+                [
+                    161.45185625282883,
+                    284.44610595703125
+                ],
+                [
+                    42.46942559537719,
+                    284.44610595703125
+                ]
+            ]
+        },
+        {
+            "title": "6.2.Traditional vs. RAG Approaches",
+            "heading_level": null,
+            "page_id": 8,
+            "polygon": [
+                [
+                    42.292531779791304,
+                    564.781527402883
+                ],
+                [
+                    231.72313853535303,
+                    564.781527402883
+                ],
+                [
+                    231.72313853535303,
+                    581.9260559082031
+                ],
+                [
+                    42.292531779791304,
+                    581.9260559082031
+                ]
+            ]
+        },
+        {
+            "title": "7. Results and Discussion",
+            "heading_level": null,
+            "page_id": 9,
+            "polygon": [
+                [
+                    42.03248696123022,
+                    388.85492851005955
+                ],
+                [
+                    199.49810606526486,
+                    388.85492851005955
+                ],
+                [
+                    199.49810606526486,
+                    408.4426574707031
+                ],
+                [
+                    42.03248696123022,
+                    408.4426574707031
+                ]
+            ]
+        },
+        {
+            "title": "8. Conclusion",
+            "heading_level": null,
+            "page_id": 10,
+            "polygon": [
+                [
+                    42.100842646447475,
+                    18.6369579872274
+                ],
+                [
+                    130.43639183524874,
+                    18.6369579872274
+                ],
+                [
+                    130.43639183524874,
+                    36.41265869140625
+                ],
+                [
+                    42.100842646447475,
+                    36.41265869140625
+                ]
+            ]
+        },
+        {
+            "title": "References",
+            "heading_level": null,
+            "page_id": 10,
+            "polygon": [
+                [
+                    24.019472501740346,
+                    336.2447678250918
+                ],
+                [
+                    92.55749204236854,
+                    336.2447678250918
+                ],
+                [
+                    92.55749204236854,
+                    354.0526428222656
+                ],
+                [
+                    24.019472501740346,
+                    354.0526428222656
+                ]
+            ]
+        }
+    ],
+    "page_stats": [
+        {
+            "page_id": 0,
+            "text_extraction_method": "pdftext",
+            "block_counts": [
+                [
+                    "Span",
+                    107
+                ],
+                [
+                    "Line",
+                    35
+                ],
+                [
+                    "Text",
+                    5
+                ],
+                [
+                    "SectionHeader",
+                    4
+                ],
+                [
+                    "PageFooter",
+                    3
+                ],
+                [
+                    "PageHeader",
+                    2
+                ],
+                [
+                    "Picture",
+                    1
+                ]
+            ],
+            "block_metadata": {
+                "llm_request_count": 0,
+                "llm_error_count": 0,
+                "llm_tokens_used": 0,
+                "previous_text": "",
+                "previous_type": "",
+                "previous_order": 0
+            }
+        },
+        {
+            "page_id": 1,
+            "text_extraction_method": "pdftext",
+            "block_counts": [
+                [
+                    "Span",
+                    147
+                ],
+                [
+                    "Line",
+                    49
+                ],
+                [
+                    "Text",
+                    8
+                ],
+                [
+                    "SectionHeader",
+                    3
+                ],
+                [
+                    "PageFooter",
+                    3
+                ],
+                [
+                    "PageHeader",
+                    1
+                ],
+                [
+                    "ListGroup",
+                    1
+                ]
+            ],
+            "block_metadata": {
+                "llm_request_count": 0,
+                "llm_error_count": 0,
+                "llm_tokens_used": 0,
+                "previous_text": "",
+                "previous_type": "",
+                "previous_order": 0
+            }
+        },
+        {
+            "page_id": 2,
+            "text_extraction_method": "pdftext",
+            "block_counts": [
+                [
+                    "Span",
+                    142
+                ],
+                [
+                    "Line",
+                    46
+                ],
+                [
+                    "SectionHeader",
+                    5
+                ],
+                [
+                    "Text",
+                    3
+                ],
+                [
+                    "PageFooter",
+                    3
+                ],
+                [
+                    "PageHeader",
+                    1
+                ],
+                [
+                    "ListGroup",
+                    1
+                ],
+                [
+                    "Table",
+                    1
+                ]
+            ],
+            "block_metadata": {
+                "llm_request_count": 1,
+                "llm_error_count": 0,
+                "llm_tokens_used": 1655,
+                "previous_text": "",
+                "previous_type": "",
+                "previous_order": 0
+            }
+        },
+        {
+            "page_id": 3,
+            "text_extraction_method": "pdftext",
+            "block_counts": [
+                [
+                    "Span",
+                    94
+                ],
+                [
+                    "Line",
+                    27
+                ],
+                [
+                    "Text",
+                    8
+                ],
+                [
+                    "SectionHeader",
+                    3
+                ],
+                [
+                    "PageFooter",
+                    3
+                ],
+                [
+                    "PageHeader",
+                    1
+                ],
+                [
+                    "Diagram",
+                    1
+                ],
+                [
+                    "Caption",
+                    1
+                ]
+            ],
+            "block_metadata": {
+                "llm_request_count": 0,
+                "llm_error_count": 0,
+                "llm_tokens_used": 0,
+                "previous_text": "",
+                "previous_type": "",
+                "previous_order": 0
+            }
+        },
+        {
+            "page_id": 4,
+            "text_extraction_method": "pdftext",
+            "block_counts": [
+                [
+                    "Span",
+                    85
+                ],
+                [
+                    "Line",
+                    23
+                ],
+                [
+                    "Text",
+                    7
+                ],
+                [
+                    "SectionHeader",
+                    3
+                ],
+                [
+                    "PageFooter",
+                    3
+                ],
+                [
+                    "PageHeader",
+                    1
+                ]
+            ],
+            "block_metadata": {
+                "llm_request_count": 0,
+                "llm_error_count": 0,
+                "llm_tokens_used": 0,
+                "previous_text": "",
+                "previous_type": "",
+                "previous_order": 0
+            }
+        },
+        {
+            "page_id": 5,
+            "text_extraction_method": "pdftext",
+            "block_counts": [
+                [
+                    "Span",
+                    78
+                ],
+                [
+                    "Line",
+                    21
+                ],
+                [
+                    "SectionHeader",
+                    5
+                ],
+                [
+                    "Text",
+                    4
+                ],
+                [
+                    "PageFooter",
+                    3
+                ],
+                [
+                    "PageHeader",
+                    1
+                ],
+                [
+                    "Diagram",
+                    1
+                ],
+                [
+                    "Caption",
+                    1
+                ]
+            ],
+            "block_metadata": {
+                "llm_request_count": 0,
+                "llm_error_count": 0,
+                "llm_tokens_used": 0,
+                "previous_text": "",
+                "previous_type": "",
+                "previous_order": 0
+            }
+        },
+        {
+            "page_id": 6,
+            "text_extraction_method": "pdftext",
+            "block_counts": [
+                [
+                    "Span",
+                    127
+                ],
+                [
+                    "Line",
+                    44
+                ],
+                [
+                    "Text",
+                    10
+                ],
+                [
+                    "SectionHeader",
+                    6
+                ],
+                [
+                    "PageFooter",
+                    3
+                ],
+                [
+                    "PageHeader",
+                    1
+                ],
+                [
+                    "ListGroup",
+                    1
+                ]
+            ],
+            "block_metadata": {
+                "llm_request_count": 0,
+                "llm_error_count": 0,
+                "llm_tokens_used": 0,
+                "previous_text": "",
+                "previous_type": "",
+                "previous_order": 0
+            }
+        },
+        {
+            "page_id": 7,
+            "text_extraction_method": "pdftext",
+            "block_counts": [
+                [
+                    "Span",
+                    147
+                ],
+                [
+                    "Line",
+                    49
+                ],
+                [
+                    "SectionHeader",
+                    6
+                ],
+                [
+                    "Text",
+                    5
+                ],
+                [
+                    "PageFooter",
+                    3
+                ],
+                [
+                    "PageHeader",
+                    1
+                ],
+                [
+                    "Table",
+                    1
+                ]
+            ],
+            "block_metadata": {
+                "llm_request_count": 1,
+                "llm_error_count": 0,
+                "llm_tokens_used": 1240,
+                "previous_text": "",
+                "previous_type": "",
+                "previous_order": 0
+            }
+        },
+        {
+            "page_id": 8,
+            "text_extraction_method": "pdftext",
+            "block_counts": [
+                [
+                    "Span",
+                    177
+                ],
+                [
+                    "Line",
+                    54
+                ],
+                [
+                    "SectionHeader",
+                    3
+                ],
+                [
+                    "Text",
+                    3
+                ],
+                [
+                    "PageFooter",
+                    3
+                ],
+                [
+                    "Table",
+                    2
+                ],
+                [
+                    "PageHeader",
+                    1
+                ]
+            ],
+            "block_metadata": {
+                "llm_request_count": 2,
+                "llm_error_count": 0,
+                "llm_tokens_used": 2986,
+                "previous_text": "",
+                "previous_type": "",
+                "previous_order": 0
+            }
+        },
+        {
+            "page_id": 9,
+            "text_extraction_method": "pdftext",
+            "block_counts": [
+                [
+                    "Span",
+                    170
+                ],
+                [
+                    "Line",
+                    66
+                ],
+                [
+                    "Text",
+                    4
+                ],
+                [
+                    "PageFooter",
+                    3
+                ],
+                [
+                    "PageHeader",
+                    1
+                ],
+                [
+                    "Table",
+                    1
+                ],
+                [
+                    "SectionHeader",
+                    1
+                ]
+            ],
+            "block_metadata": {
+                "llm_request_count": 1,
+                "llm_error_count": 0,
+                "llm_tokens_used": 1710,
+                "previous_text": "",
+                "previous_type": "",
+                "previous_order": 0
+            }
+        },
+        {
+            "page_id": 10,
+            "text_extraction_method": "pdftext",
+            "block_counts": [
+                [
+                    "Span",
+                    156
+                ],
+                [
+                    "Line",
+                    45
+                ],
+                [
+                    "Text",
+                    3
+                ],
+                [
+                    "PageFooter",
+                    3
+                ],
+                [
+                    "SectionHeader",
+                    2
+                ],
+                [
+                    "ListItem",
+                    2
+                ],
+                [
+                    "PageHeader",
+                    1
+                ],
+                [
+                    "ListGroup",
+                    1
+                ]
+            ],
+            "block_metadata": {
+                "llm_request_count": 0,
+                "llm_error_count": 0,
+                "llm_tokens_used": 0,
+                "previous_text": "",
+                "previous_type": "",
+                "previous_order": 0
+            }
+        },
+        {
+            "page_id": 11,
+            "text_extraction_method": "pdftext",
+            "block_counts": [
+                [
+                    "Span",
+                    188
+                ],
+                [
+                    "Line",
+                    47
+                ],
+                [
+                    "Text",
+                    13
+                ],
+                [
+                    "ListItem",
+                    6
+                ],
+                [
+                    "PageFooter",
+                    3
+                ],
+                [
+                    "PageHeader",
+                    1
+                ],
+                [
+                    "ListGroup",
+                    1
+                ]
+            ],
+            "block_metadata": {
+                "llm_request_count": 12,
+                "llm_error_count": 1,
+                "llm_tokens_used": 12784,
+                "previous_text": "",
+                "previous_type": "",
+                "previous_order": 0
+            }
+        },
+        {
+            "page_id": 12,
+            "text_extraction_method": "pdftext",
+            "block_counts": [
+                [
+                    "Span",
+                    45
+                ],
+                [
+                    "Line",
+                    7
+                ],
+                [
+                    "PageFooter",
+                    3
+                ],
+                [
+                    "Text",
+                    2
+                ],
+                [
+                    "PageHeader",
+                    1
+                ]
+            ],
+            "block_metadata": {
+                "llm_request_count": 1,
+                "llm_error_count": 0,
+                "llm_tokens_used": 940,
+                "previous_text": "",
+                "previous_type": "",
+                "previous_order": 0
+            }
+        }
+    ],
+    "debug_data_path": "debug_data/IJNRD2506195"
+}

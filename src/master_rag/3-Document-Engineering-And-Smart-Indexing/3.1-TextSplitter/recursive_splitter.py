@@ -15,7 +15,6 @@ load_dotenv()
 
 from langchain_community.document_loaders import TextLoader
 from langchain_community.vectorstores import Chroma
-from langchain_core.load import dumps, loads
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.prompts.chat import (
@@ -25,8 +24,7 @@ from langchain_core.prompts.chat import (
 from langchain_core.runnables import RunnablePassthrough
 from langchain_ollama import OllamaEmbeddings
 from langchain_openai import ChatOpenAI
-from langchain_text_splitters import  RecursiveCharacterTextSplitter
-
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # ------------------------ LLM and Embedding Models ------------------------
 LANGUAGE_MODEL = "llama3.2"  # "gemma4:31b-cloud" #  
@@ -48,7 +46,7 @@ chat_prompt_template = ChatPromptTemplate.from_messages(
 # ---------------------------------- Pre-Process: INDEXING ----------------------------------
 chunk_size = 300
 
-state_of_the_union = TextLoader("./docs/state_of_the_union.txt").load()
+state_of_the_union = TextLoader("../data/state_of_the_union.txt").load()
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=chunk_size,
     chunk_overlap=0

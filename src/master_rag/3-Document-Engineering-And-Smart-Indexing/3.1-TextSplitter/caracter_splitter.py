@@ -47,7 +47,7 @@ chat_prompt_template = ChatPromptTemplate.from_messages(
 # ---------------------------------- Pre-Process: INDEXING ----------------------------------
 chunk_size = 200
 
-state_of_the_union = TextLoader("./docs/state_of_the_union.txt").load()
+state_of_the_union = TextLoader("../data/state_of_the_union.txt").load()
 text_splitter = CharacterTextSplitter(
     chunk_size=chunk_size,
     chunk_overlap=0

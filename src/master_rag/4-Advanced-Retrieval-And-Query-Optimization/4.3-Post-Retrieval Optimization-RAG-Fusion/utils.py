@@ -1,11 +1,13 @@
 # Natural Language Toolkit : https://www.nltk.org/
-import nltk
-from nltk.tokenize import sent_tokenize
-from langchain_community.vectorstores import Chroma
-from langchain.docstore.document import Document
-from sentence_transformers import SentenceTransformer
-from langchain.embeddings import HuggingFaceEmbeddings
 import json
+
+import nltk
+from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import Chroma
+from langchain_core.documents import Document
+from nltk.tokenize import sent_tokenize
+from sentence_transformers import SentenceTransformer
+
 # source : https://blog.demir.io/advanced-rag-implementing-advanced-techniques-to-enhance-retrieval-augmented-generation-systems-0e07301e46f4
 
 nltk.download('punkt')  # Ensure the punkt tokenizer is downloaded

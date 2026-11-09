@@ -8,30 +8,34 @@ THE STEPS
 4. Let’s use query re-writing to optimize the query for web search.
 '''
 import os
-from dotenv import load_dotenv
-from colorama import Fore
-from pydantic import BaseModel, Field
 import warnings
+
+from colorama import Fore
+from dotenv import load_dotenv
+from pydantic import BaseModel, Field
 
 warnings.filterwarnings("ignore")
 USER_AGENT = "master-rag-app"
 os.environ["USER_AGENT"] = USER_AGENT
 load_dotenv()
 
-from langchain_core.documents import Document
-from langchain_core.load import dumps, loads
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.prompts.chat import HumanMessagePromptTemplate, SystemMessagePromptTemplate
-from langchain_community.tools.tavily_search import TavilySearchResults
-from langchain_community.document_loaders import WebBaseLoader
-from langchain_community.vectorstores import Chroma
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_openai import ChatOpenAI
-from langchain_ollama import OllamaEmbeddings
+import warnings
 
 from colorama import Fore
-import warnings
+from langchain_community.document_loaders import WebBaseLoader
+from langchain_community.tools.tavily_search import TavilySearchResults
+from langchain_community.vectorstores import Chroma
+from langchain_core.documents import Document
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts.chat import (
+    HumanMessagePromptTemplate,
+    SystemMessagePromptTemplate,
+)
+from langchain_ollama import OllamaEmbeddings
+from langchain_openai import ChatOpenAI
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
 warnings.filterwarnings("ignore")
 
 load_dotenv()

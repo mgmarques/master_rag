@@ -1,8 +1,8 @@
 """A2A agent 2: warranty specialist (owns the check_warranty tool)."""
-import os
 import json
-import httpx
+import os
 
+import httpx
 from langchain_core.messages import SystemMessage, ToolMessage
 from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI

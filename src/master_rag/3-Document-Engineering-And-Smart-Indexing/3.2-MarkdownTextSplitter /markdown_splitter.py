@@ -15,7 +15,6 @@ load_dotenv()
 
 from langchain_community.document_loaders import TextLoader
 from langchain_community.vectorstores import Chroma
-from langchain_core.load import dumps, loads
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.prompts.chat import (
@@ -26,7 +25,6 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_ollama import OllamaEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain_text_splitters import MarkdownTextSplitter
-
 
 # ------------------------ LLM and Embedding Models ------------------------
 LANGUAGE_MODEL = "gemma4:31b-cloud"  #  "llama3.2"  #   

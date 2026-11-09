@@ -1,5 +1,6 @@
 from colorama import Fore
-from query import query 
+from query import query
+
 
 # https://medium.com/artificial-corner/re-ranking-is-all-you-need-7a6b1e586d48
 def start():

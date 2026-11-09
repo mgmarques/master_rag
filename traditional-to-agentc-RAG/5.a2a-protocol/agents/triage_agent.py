@@ -2,11 +2,11 @@
 import os
 from pathlib import Path
 from typing import Literal
-from pydantic import BaseModel, Field
 
 from langchain_core.messages import AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from langgraph.graph import END, START, MessagesState, StateGraph
+from pydantic import BaseModel, Field
 
 COMPANY = "Northstar Printer Support"
 

@@ -1,20 +1,23 @@
-from dotenv import load_dotenv
-from colorama import Fore
-
-from langchain_openai import ChatOpenAI
-from langchain_ollama import OllamaEmbeddings
-from langchain_core.documents import Document
-from langchain_core.vectorstores import VectorStoreRetriever
-from langchain_community.document_loaders import TextLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_core.prompts.chat import HumanMessagePromptTemplate, SystemMessagePromptTemplate
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.runnables import RunnablePassthrough
-from langchain_chroma import Chroma
 # https://docs.langchain.com/oss/python/integrations/vectorstores/chroma
-
 import warnings
+
+from colorama import Fore
+from dotenv import load_dotenv
+from langchain_chroma import Chroma
+from langchain_community.document_loaders import TextLoader
+from langchain_core.documents import Document
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts.chat import (
+    HumanMessagePromptTemplate,
+    SystemMessagePromptTemplate,
+)
+from langchain_core.runnables import RunnablePassthrough
+from langchain_core.vectorstores import VectorStoreRetriever
+from langchain_ollama import OllamaEmbeddings
+from langchain_openai import ChatOpenAI
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
 warnings.filterwarnings("ignore")
 
 load_dotenv()

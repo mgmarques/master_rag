@@ -1,21 +1,21 @@
 # Multi-query RAG
 import os
+
 USER_AGENT = "master-rag-app"
 os.environ["USER_AGENT"] = USER_AGENT
 
-from dotenv import load_dotenv
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_community.document_loaders import WebBaseLoader
-from langchain_community.vectorstores import Chroma
-from langchain_core.runnables import RunnablePassthrough
-from langchain_core.output_parsers import StrOutputParser
-from langchain_openai import ChatOpenAI
-from langchain_ollama import OllamaEmbeddings
-from langchain_core.load import dumps, loads
-from colorama import Fore
 import warnings
 
+from colorama import Fore
+from dotenv import load_dotenv
+from langchain_community.document_loaders import WebBaseLoader
+from langchain_community.vectorstores import Chroma
+from langchain_core.load import dumps, loads
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_ollama import OllamaEmbeddings
+from langchain_openai import ChatOpenAI
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 warnings.filterwarnings("ignore")
 load_dotenv()
