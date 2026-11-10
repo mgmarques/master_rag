@@ -32,6 +32,23 @@ class GraphState(TypedDict):
 workflow = StateGraph(GraphState)
 
 # ----------------------------------------- NODES -----------------------------------------
+def rewrite_query(state):  
+    """
+    Rewrite the query to produce an optimized question.
+
+    Args:
+        state (dict): The current graph state
+
+    Returns:
+        state (dict): Updates question key with a re-phrased question
+    """
+    print(f"{Fore.BLUE}---REVISE QUERY---{Fore.RESET}")
+    question = state["question"]
+    optimized_question = rewrite_query_llm(question)
+
+    return {"question": optimized_question}
+
+
 def retrieve_documents(state):
     """
     Retrieve documents
@@ -67,36 +84,17 @@ def grade_documents(state):
     # Score each doc
     filtered_documents = []
     web_search = "No"
-    for d in documents:
-        score, _ = assess_retrieved_docs(question, [d])
-        print("-"*30, score, "-"*30)
+    for doc in documents:
+        score, _ = assess_retrieved_docs(question, [doc])
+        print(f"{Fore.LIGHTGREEN_EX}---{score}---{Fore.RESET}")
         if score.lower() == "yes":
-            filtered_documents.append(d)
             print(f"{Fore.GREEN}--- document is relevant ✅ ---{Fore.RESET}")
-            filtered_documents.append(d)
+            filtered_documents.append(doc)
         else:
             print(f"{Fore.RED}--- document is not relevant ❌ ---{Fore.RESET}")
             web_search = "Yes"
             continue
     return {"documents": filtered_documents, "question": question, "web_search": web_search}
-
-def rewrite_query(state):  
-    """
-    rewrite the query to produce an optimized question.
-
-    Args:
-        state (dict): The current graph state
-
-    Returns:
-        state (dict): Updates question key with a re-phrased question
-    """
-    print(f"{Fore.BLUE}---REVISE QUERY---{Fore.RESET}")
-    question = state["question"]
-    #documents = state["documents"]
-
-    # Re-write question
-    optimized_question = rewrite_query_llm(question)
-    return {"question": optimized_question}
 
 def web_search_node(state):
     """
@@ -150,9 +148,7 @@ def decide_to_search_the_web(state):
     """
 
     print("---ASSESS GRADED DOCUMENTS---")
-    #question = state["question"]
     web_search = state["web_search"]
-    #filtered_documents = state["documents"]
 
     if web_search == "Yes":
         # search the web
@@ -162,8 +158,7 @@ def decide_to_search_the_web(state):
     else:
         # The retried dosuments is enogth 
         print("---DECISION: NOT SEARCH THE WEB---")
-        return "not_web_search_node"
-
+        return "generation_answer"
 
 def generate(state):
     return "generate"
@@ -173,7 +168,7 @@ workflow.add_node("rewrite_query", rewrite_query)
 workflow.add_node("retrieve_documents", retrieve_documents)
 workflow.add_node("grade_documents", grade_documents)
 workflow.add_node("web_search_node", web_search_node)
-workflow.add_node("generate", generation_answer)
+workflow.add_node("generation_answer", generation_answer)
 
 # -------------------------------------- Build graph ---------------------------------------
 workflow.set_entry_point("rewrite_query")
@@ -183,10 +178,10 @@ workflow.add_conditional_edges(
     "grade_documents", 
     decide_to_search_the_web, {
         "web_search_node": "web_search_node",
-        "not_web_search_node": "generate"
+        "generation_answer": "generation_answer"
     })
 
-workflow.add_edge("web_search_node", "generate")
+workflow.add_edge("web_search_node", "generation_answer")
 
 # Compile
 app = workflow.compile()

@@ -87,14 +87,13 @@ print(f"{Fore.CYAN}Indexed {vectorstore._collection.count()} chunks{Fore.RESET}"
 # It automatically passes the query to an embedding model
 retriever = vectorstore.as_retriever(
     search_type="similarity", 
-    search_kwargs={"k": 4}  # Restricts output to the top 4 most relevant chunks
+    search_kwargs={"k": 2}  # Restricts output to the top 2 most relevant chunks
 )
 
 # ----------------------- Question Re-writer - Knowledge Refinement -----------------------
-prompt_template = """
-Given a user input {question}, re-write or rephrase the question to optimize the query for 
-the model
-"""
+prompt_template = """You are a question re-writer. Rewrite the user's question to be
+optimized for web search and vector retrieval. Output ONLY the rewritten question,
+with no explanation or preamble."""
 
 system_prompt = SystemMessagePromptTemplate.from_template(prompt_template)
 human_prompt = HumanMessagePromptTemplate.from_template(
@@ -145,12 +144,12 @@ grader_prompt = ChatPromptTemplate.from_messages(
 )
 
 def assess_retrieved_docs(query, documents = None):
-    retrieval_grader = grader_prompt | structured_llm_grader | get_score
+    retrieval_grader = grader_prompt | structured_llm_grader
     docs = documents if documents else retriever.invoke(query)
     doc_txt = docs[0].page_content
     print(f"{Fore.RED}Doc Retrieved: {doc_txt}{Fore.RESET}")  
-    binary_score = retrieval_grader.invoke({"question": query, "documents": doc_txt})
-    return binary_score, docs
+    result = retrieval_grader.invoke({"question": query, "documents": doc_txt})
+    return result.binary_score, docs
 
 ### Web Search Tool - Knowledge Searching ####
 web_search_tool = TavilySearch(k=3) 
@@ -174,7 +173,8 @@ def generate_answer(docs, query):
     rag_chain = rag_prompt | llm | StrOutputParser()
 
     # Run
-    return rag_chain.invoke({"context": docs, "question": query})
+    # .stream() yields string chunks because of StrOutputParser
+    yield from rag_chain.stream({"context": docs, "question": query})
 
 # -------------------------------- RAG Pipeline ---------------------------------
 def query(query):
@@ -193,7 +193,7 @@ def query(query):
     binary_score, docs = assess_retrieved_docs(optimized_query)
     print("Relevance Score:", binary_score)
     #  if they are of low quality triggers external knowledge searches to correct or supplement irrelevant or insufficient information.
-    if binary_score == "no":
+    if binary_score.strip().lower().startswith("no"):
         print(f"{Fore.MAGENTA}Retrieval is not relevant. Searching the web...{Fore.RESET}")
         docs = search_web(optimized_query) 
-    return generate_answer(docs, optimized_query)
+    yield from generate_answer(docs, optimized_query)
