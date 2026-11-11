@@ -4,7 +4,10 @@ This blueprint is divided into six progressive phases, moving from a basic "Chat
 ## Phase 1: Foundations of LLM Development
 Before building RAG, you must master the interface between the application and the model.
 *   **Core LLM Capabilities:** Understanding tokens, context windows, temperature, and the difference between Base models and Instruct-tuned models.
-*   **Environment Setup:** Establishing a professional Python environment (uv) and integrating the `ChatOpenAI` API.
+*   **LangChain Core**: Starting the Python Notebooks series to understand the 4 levels of abstraction and the basic elements, let's look at the building blocks of the LangChain core through examples,
+*   **LangGraph Orchestration**: Let's built graphs by hand: state with a reducer, nodes, edges, a conditional edge, a tool loop, a second LLM node, observability, memory in two flavors, and a way to inspect and replay the whole thing.
+*   **LangChain Agent**: Let's go through it with a code example to build an agent in a single line, seeing that it is really a LangGraph graph, given its tools, memory, and structured output, shaped with middleware, and let it drive a real browser through an MCP server.
+*   **LangChain Deep Agents:** Let's introduce the topic by creating a Deep Agent that planned its own work, searched the web, wrote files to disk, delegated to a sub-agent, and turned its findings into a branded PowerPoint slide by following an Agent Skill. 
 *   **The "Native" RAG Pipeline (RAG 101):** 
     *   Implementing the basic flow: **Load $\rightarrow$ Split $\rightarrow$ Embed $\rightarrow$ Store $\rightarrow$ Retrieve $\rightarrow$ Generate**.
     *   **Hands-on:** Building a basic Q&A system using **InMemoryVectorStore** or **ChromaDB** for local vector storage.

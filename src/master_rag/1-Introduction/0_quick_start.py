@@ -1,10 +1,6 @@
-import warnings
-
 from colorama import Fore
 from dotenv import load_dotenv
 from openai import OpenAI
-
-warnings.filterwarnings("ignore")
 
 # LOAD ENV VARIABLES
 load_dotenv()
